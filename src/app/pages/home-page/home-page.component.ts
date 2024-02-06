@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Continent } from '../../interfaces/inferfaces_home';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-home-page',
@@ -8,5 +10,19 @@ import { Component } from '@angular/core';
   styleUrl: './home-page.component.css'
 })
 export class HomePageComponent {
+  continents: Continent[] = [
+    { name: 'África' },
+    { name: 'América' },
+    { name: 'Asia' },
+    { name: 'Europa' },
+    { name: 'Oceanía' },
+    { name: 'Antártida' }
+  ];
+
+  constructor(private location: Location) {}
+
+  goBack(): void {
+    this.location.back();
+  }
 
 }
