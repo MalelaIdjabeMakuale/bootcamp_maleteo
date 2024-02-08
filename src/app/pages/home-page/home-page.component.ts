@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Continent } from '../../interfaces/inferfaces_home';
-import { CommonModule, Location } from '@angular/common';
+import { Location } from '@angular/common';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css'
 })
@@ -18,8 +19,8 @@ export class HomePageComponent {
     { name: 'Oceanía' },
     { name: 'Antártida' }
   ];
-  constructor(private location: Location) {}
 
+  constructor(private location: Location) {}
 
   goBack(): void {
     this.location.back();
