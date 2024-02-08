@@ -1,14 +1,13 @@
-<div clas="botonAtras">
+<div class="botonAtras">
     <button (click)="goBack()">Atrás</button>
     </div>
     
     <div class="selecciona">
     <h2 class="continente"> Selecciona </h2>
     <select>
-      <option @for (continent of Continents; track continent.name){
+      <option *ngFor="let continent of continents; let i = index" [value]="continent.name">
         {{ continent.name }}
-      }>
-    </option>
+      </option>
     </select>
     </div>
     <!-- Aquí no tengo claro que se va a ver en el recuadro, pretendo que se vea un continente predeterminado -->
