@@ -1,1 +1,42 @@
-<p>landing-page works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section>
+
+        <div>
+            <img src="" alt="logo">
+        </div>
+        <div>
+            <h1>MALETEO</h1>
+        </div>
+    </section>
+
+    
+<div class="modal" *ngIf="showModal">
+    <div class="modal-content">
+        <img src="../../../assets/cadena.png" alt="">
+      <h2>Prepárate para liberarte de tu equipaje</h2>
+      <p>Encuentra a tu guardián y disfruta \na tu manera. Miles de usuarios ya están aprovechando las ventajas.</p>
+      <button (click)="closeModal('showModal')">Continuar</button>
+    </div>
+  </div>
+
+  <div class="modal" *ngIf="showModal2">
+    <div class="modal-content">
+        <img src="../../../assets/tierra.png" alt="">
+
+      <h2>El mismo precio en cualquier parte</h2>
+      <p>Dispondrás de un precio fijo estés donde estés sin importar el tamaño o el peso.</p>
+      <button (click)="closeModal('showModal2')">Empezar ya</button>
+      <a href="">consulta de precios</a>
+    </div>
+  </div>
+
+
+</body>
+</html>
