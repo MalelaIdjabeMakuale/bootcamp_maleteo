@@ -1,1 +1,40 @@
-<p>login-user-page works!</p>
+@if(showLoginForm){
+<div>
+  <h2>Iniciar Sesión</h2>
+  <form formControl="loginForm">
+    <label for="username">Direccion de correo electronico</label>
+    <input type="text" id="username" formControlName="username" />
+    <label for="password">Contraseña</label>
+    <input type="password" id="password" formControlName="password" />
+    <button type="submit" class="submitButton">Iniciar sesión</button>
+  </form>
+</div>
+<button (click)="toggleForm()">Soy nuevo</button>
+
+}
+@if(!showLoginForm){
+<div>
+  <h2>Registrarse</h2>
+  <form formGroup="registerForm" (submit)="onSubmit()">
+    <label for="username">Direccion de correo electronico:</label>
+    <input type="text" id="username" formControlName="username" />
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" formControlName="nombre" />
+    <label for="apellidos">Apellidos:</label>
+    <input type="text" id="apellidos" formControlName="apellidos" />
+    <label for="password">Contraseña:</label>
+    <input type="password" id="password" formControlName="password" />
+    <label for="confirmPassword">Repetir contraseña:</label>
+    <input
+      type="password"
+      id="confirmPassword"
+      formControlName="confirmPassword"
+    />
+
+    <button type="submit" class="registerButon">Registrarse</button>
+  </form>
+</div>
+<button (click)="toggleForm()">Ya soy miembro</button>
+}
+
+
