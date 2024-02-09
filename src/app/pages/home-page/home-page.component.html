@@ -5,7 +5,7 @@
     <div class="selecciona">
     <h2 class="continente"> Selecciona </h2>
     <select>
-      <option @for (continent of Continents; track continent.name){
+      <option *ngFor="let continent of continents; index as i;"{
         {{ continent.name }}
       }>
     </option>
