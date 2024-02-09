@@ -1,17 +1,18 @@
 <div class="botonAtras">
     <button (click)="goBack()">Atrás</button>
     </div>
-    
+
     <div class="selecciona">
     <h2 class="continente"> Selecciona </h2>
     <select>
-      <option *ngFor="let continent of continents; let i = index" [value]="continent.name">
+      <option @for (continent of Continents; track continent.name){
         {{ continent.name }}
-      </option>
+      }>
+    </option>
     </select>
     </div>
     <!-- Aquí no tengo claro que se va a ver en el recuadro, pretendo que se vea un continente predeterminado -->
-    
+
     <div class="tarifas">
     <h2 class="nuestrasTarifas"> Nuestras tarifas fijas </h2>
     <div class="tarifa1">
@@ -19,9 +20,10 @@
       <h2>6 €</h2>
       <h4>por equipaje</h4>
     </div>
-    
+
     <div class="tarifa2">
       <h4>Día adicional</h4>
-      <h2>4 € por equipaje</h2>
+      <h2>4 €</h2>
+      <h4>por equipaje</h4>
     </div>
     </div>
