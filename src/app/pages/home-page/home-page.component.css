@@ -1,0 +1,61 @@
+
+.botonAtras {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px;
+}
+
+.botonAtras button {
+  background-color: transparent;
+  border: none;
+  font-size: 1rem;
+  color: black;
+  cursor: pointer;
+}
+
+
+.selecciona {
+  width: 100%;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.selecciona select {
+  width: 80%;
+  padding: 8px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+
+.tarifas {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 20px;
+  flex-direction: column;
+}
+
+.tarifas .tarifa1,
+.tarifas .tarifa2 {
+  background-color: #FFA500;
+  padding: 20px;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+  margin-bottom: 20px;
+  width: 80%;
+}
+
+.tarifas .tarifa2 {
+  background-color: #0073ff;
+}
+
+.nuestrasTarifas {
+  align-self: flex-start;
+}
+
