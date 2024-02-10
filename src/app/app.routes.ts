@@ -6,7 +6,9 @@ import { LoginUserPageComponent } from './pages/login-user-page/login-user-page.
 import { UsersPageComponent } from './pages/users-page/users-page.component';
 import { DetailPagesComponent } from './pages/detail-pages/detail-pages.component';
 import { LocationPagesComponent } from './pages/location-pages/location-pages.component';
+import {LocalizacionComponent} from './pages/localizacion/localizacion.component';
 import { AdsPagesComponent } from './pages/ads-pages/ads-pages.component';
+
 
 export const routes: Routes = [{path:'', component: LandingPageComponent},
 {path:'home', component: HomePageComponent},
@@ -14,6 +16,8 @@ export const routes: Routes = [{path:'', component: LandingPageComponent},
 {path:'usuarios', component: UsersPageComponent},
 {path:'usuarios/:id', component: DetailPagesComponent}, 
 {path: 'ubicacion', component: LocationPagesComponent},
-{path: 'anuncios', component: AdsPagesComponent}
+{path: 'anuncios', component: AdsPagesComponent},
+{path: 'localizacion', component: LocalizacionComponent}
+
     
 ];
