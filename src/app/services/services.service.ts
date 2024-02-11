@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ServicesService {
 
-  private apiUrl = 'https://api-two-sigma.vercel.app/api/user';
+  private apiUrl = 'https://api-two-sigma.vercel.app/api/estaciones';
 
   constructor(private http: HttpClient) {}
 

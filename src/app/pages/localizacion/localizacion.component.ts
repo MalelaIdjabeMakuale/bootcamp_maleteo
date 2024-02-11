@@ -13,16 +13,29 @@ import { Map, marker, tileLayer } from 'leaflet';
 })
 export class LocalizacionComponent implements OnInit {
   allusers!: any[];
-  selectedLocker:string="";
-
+  selectedLocker: string = '';
+  lat: any;
+  lon: any;
   constructor(private servicio: ServicesService) {}
 
   ngOnInit(): void {
     this.servicio.getAllUsers().subscribe((data: any) => {
-      this.allusers = data.data;
-      console.log(this.allusers); 
-      this.createMap();
+      this.allusers = data;
+      console.log('soy all', this.allusers);
+      this.getLocation();
+
     });
+  }
+
+  getLocation(): void {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        alert(position.coords.latitude + ' ' + position.coords.longitude);
+        this.lat = position.coords.latitude;
+        this.lon = position.coords.longitude;
+        this.createMap();
+      });
+    }
   }
 
   createMap(): void {
@@ -32,32 +45,30 @@ export class LocalizacionComponent implements OnInit {
       attribution:
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(map);
-
-    // Utiliza los datos de this.allusers para crear marcadores según sea necesario
-    this.allusers.forEach(element => {
-
-      const markerItem = marker([element.location.latitude,element.location.longitude])
+    
+    const markerGeoloc = marker([
+      this.lat,
+      this.lon,
+    ])
       .addTo(map)
-      .bindPopup(`soylocker ${element.name}`)
+      .bindPopup(`soylocker geoloc`)
       .openPopup();
 
-    markerItem.on('click',  ()=> {
-      this.selectedLocker= element.name
-      console.log(element.name);
+    // Utiliza los datos de this.allusers para crear marcadores según sea necesario
+    this.allusers.forEach((element) => {
+      const markerItem = marker([
+        element.location.latitude,
+        element.location.longitude,
+      ])
+        .addTo(map)
+        .bindPopup(`soylocker ${element.name}`)
+        .openPopup();
+
+      markerItem.on('click', () => {
+        this.selectedLocker = element.name;
+        console.log(element.name);
+      });
     });
-    console.log(element.location.latitude)
-    // map.fitBounds([[markerItem.getLatLng().lat, markerItem.getLatLng().lng]]);
-    });
-
-    // Ejemplo de marcador estático
-    // const markerItem = marker([41.3851, 2.1734])
-    //   .addTo(map)
-    //   .bindPopup('soy loc')
-    //   .openPopup();
-
-    // markerItem.on('click', function () {
-    //   console.log('propiedades');
-    // });
-
+   
   }
 }
