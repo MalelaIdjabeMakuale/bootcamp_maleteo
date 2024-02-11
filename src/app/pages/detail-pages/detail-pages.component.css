@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+
+
+.container {
+    display: flex;
+    margin: 5vh;
+
+    .titulo {.nombre {font-family: "Catamaran", sans-serif;
+        font-size: 30px ;}
+        .editar {
+            font-family: "Noto Sans", sans-serif;
+        }
+    
+    }
+    
+    .profilePic {height: 15vh;}
+    
+
+
+}
+
+.container2 {
+    p {font-family: "Noto Sans", sans-serif;
+        font-size: 14px;
+        color: #808080;
+
+    }
+
+    h3 {font-family: "Noto Sans", sans-serif;
+        font-size: 18px ;
+
+    }
+
+    a {font-family: "Noto Sans", sans-serif;
+        font-size: 18px ;
+
+    }
+
+    div { border: none;
+        border-bottom: 1px solid #ccc;
+        width: 80%;
+margin: 5vh;
+    }
+}

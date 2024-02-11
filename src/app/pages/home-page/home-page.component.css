@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+
+.selecciona {font-family: "Catamaran", sans-serif;
+    color: #000000;
+padding: 2vh;}
+
+.nuestrasTarifas {
+    font-family: "Catamaran", sans-serif;
+    color: #000000;
+   
+}
+
+.botonAtras button{border: none;
+background: none;
+font:bolder;
+outline: none;
+font-size: 40px;}
+
+.tarifas {
+    padding: 2vh;
+   
+    
+}
+
+.tarifa1, .tarifa2 {
+    text-align: center; 
+}
+
+.tarifa1 {
+    background-color: #FF8200;
+    width: 32vh;
+    border-radius: 6px;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    margin-bottom: 3vh;
+    h4 {
+        font-family: "Noto Sans", sans-serif;
+        color: #ffffff;
+        font-size: 10px;
+        margin-bottom: 2vh;
+
+    }
+    
+    h2 {
+        font-family: "Noto Sans", sans-serif;
+        font-size: 30px;
+        color: #ffffff;
+    }
+}
+
+.tarifa2 {
+    background-color: #01B5E6;
+    width: 32vh;
+    border-radius: 6px;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    h4 {
+        font-family: "Noto Sans", sans-serif;
+        color: #ffffff;
+        font-size: 10px;
+        margin: 2vh;
+    }
+    
+    h2 {
+        font-family: "Noto Sans", sans-serif;
+        font-size: 30px;
+        color: #ffffff;
+    }
+}
+
+
