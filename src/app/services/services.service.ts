@@ -17,7 +17,7 @@ export class ServicesService {
   getAllUsers(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);
   }
-  geUserId(id:any):Observable<any[]> {
+  getUserId(id:any):Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl2}/${id}`);
   }
   //funcion para hacer get para los anuncios detalle
