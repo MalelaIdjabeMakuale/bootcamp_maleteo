@@ -13,7 +13,6 @@ import { Component,OnInit } from '@angular/core';
 export class LandingPageComponent { showModal = true;
   showModal2 = false;
 
-
   ngOnInit(): void {
   }
   closeModal(id:string) {
