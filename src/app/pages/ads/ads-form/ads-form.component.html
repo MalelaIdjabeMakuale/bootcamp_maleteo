@@ -1,20 +1,20 @@
 <h2>Describenos tu espacio:</h2>
 <form formGroup="anuncioForm">
     <div>
-        <label for="titulo">Título de tu propiedad:</label>
-        <input type="text" id="titulo" formControlName="titulo">
+        <label for="name">Título de tu propiedad:</label>
+        <input type="text" id="name" formControlName="name">
     </div>
     <div>
-        <label for="tipoPropiedad">Tipo de propiedad:</label>
-        <select id="tipoPropiedad" formControlName="tipoPropiedad">
+        <label for="propertyType">Tipo de propiedad:</label>
+        <select id="propertyType" formControlName="propertyType">
             <option value="Casa">Casa</option>
             <option value="Hotel">Hotel</option>
             <option value="Establecimiento">Establecimiento</option>
         </select>
     </div>
     <div>
-        <label for="tipoEspacio">Tipo de espacio:</label>
-        <select id="tipoEspacio" formControlName="tipoEspacio">
+        <label for="spaceType">Tipo de espacio:</label>
+        <select id="spaceType" formControlName="spaceType">
             <option value="Habitación">Habitación</option>
             <option value="Hall">Hall</option>
             <option value="Trastero">Trastero</option>
@@ -24,20 +24,20 @@
         </select>
     </div>
     <div>
-        <label for="localización">Localización de tu propiedad:</label>
-        <input type="text" id="localización" formControlName="localizacion">
+        <label for="location">Localización de tu propiedad:</label>
+        <input type="text" id="location" formControlName="location">
     </div>
     <div>
-        <label for="imagen">Imagen de tu propiedad:</label>
-        <input type="file" id="imagen" formControlName="imagen">
+        <label for="img">Imagen de tu propiedad:</label>
+        <input type="file" id="img" formControlName="img">
     </div>
     <div>
-        <label for="capacidad">Capacidad de tu propiedad:</label>
-        <input type="number" id="capacidad" formControlName="capacidad">
+        <label for="capacity">Capacidad de tu propiedad:</label>
+        <input type="number" id="capacity" formControlName="capacity">
     </div>
     <div>
-        <label for="disponible">¿Disponible?</label>
-        <input type="checkbox" id="disponible" formControlName="disponible">
+        <label for="available">¿Disponible?</label>
+        <input type="checkbox" id="available" formControlName="available">
     </div>
     <button type="submit">Registrar Propiedad</button>
 </form>
