@@ -1,0 +1,35 @@
+<h2>Describenos tu espacio:</h2>
+<form formGroup="anuncioForm">
+    <div>
+        <label for="titulo">Título de tu propiedad:</label>
+        <input type="text" id="titulo" formControlName="titulo">
+    </div>
+    <div>
+        <label for="tipoPropiedad">Tipo de propiedad:</label>
+        <select id="tipoPropiedad" formControlName="tipoPropiedad">
+            <option value="Casa">Casa</option>
+            <option value="Hotel">Hotel</option>
+            <option value="Establecimiento">Establecimiento</option>
+        </select>
+    </div>
+    <div>
+        <label for="tipoEspacio">Tipo de espacio:</label>
+        <select id="tipoEspacio" formControlName="tipoEspacio">
+            <option value="Habitación">Habitación</option>
+            <option value="Hall">Hall</option>
+            <option value="Trastero">Trastero</option>
+            <option value="Buhardilla">Buhardilla</option>
+            <option value="Garaje">Garaje</option>
+            <option value="Habitación">Habitación</option>
+        </select>
+    </div>
+    <div>
+        <label for="direccion">Dirección de tu propiedad:</label>
+        <input type="text" id="direccion" formControlName="direccion">
+    </div>
+    <div>
+        <label for="disponible">¿Disponible?</label>
+        <input type="checkbox" id="disponible" formControlName="disponible">
+    </div>
+    <button type="submit">Registrar Propiedad</button>
+</form>
