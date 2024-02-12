@@ -1,39 +1,56 @@
-import { Component, NgModule, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import {
+  FormGroup,
+  FormControl,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { Router } from '@angular/router';
-
+import { ServicesService } from '../../services/services.service';
 
 @Component({
   selector: 'app-login-user-page',
+  standalone: true,
+  imports: [ReactiveFormsModule],
   templateUrl: './login-user-page.component.html',
   styleUrls: ['./login-user-page.component.css'],
 })
 export class LoginUserPageComponent implements OnInit {
-  loginForm = new FormGroup({
-    username: new FormControl(""),
-    password: new FormControl("")
-  });
 
-  registerForm: FormGroup = this.formbuilder.group({
-    username: new FormControl(""),
-    nombre: new FormControl(""),
-    apellidos: new FormControl(""),
-    password: new FormControl(""),
-    confirmPassword: new FormControl("")
-  });
+  ngOnInit(): void {  }
 
   showLoginForm: boolean = true;
   showRegisterForm: boolean = false;
 
-  constructor(private formbuilder: FormBuilder, private router: Router) {}
+  constructor(
+    private router: Router,
+    private servicesService: ServicesService
+  ) { }
+  
+  registerForm: FormGroup = new FormGroup({
+    username: new FormControl(''),
+    nombre: new FormControl(''),
+    apellidos: new FormControl(''),
+    password: new FormControl(''),
+    confirmPassword: new FormControl(''),
+  });
 
-  ngOnInit(): void {}
+  loginForm: FormGroup = new FormGroup({
+    username: new FormControl(''),
+    password: new FormControl(''),
+  });
 
   onSubmit() {
     if (this.showLoginForm && this.loginForm.valid) {
-      this.router.navigate(['/usuarios']);
+      const loginFormData = this.loginForm.value;
+
+      this.servicesService.loginUser(loginFormData);
+      console.log(this.loginForm.value);
+      // this.router.navigate(['/usuarios']);
     } else if (!this.showLoginForm && this.registerForm.valid) {
-      this.router.navigate(['/usuarios']);
+      const registerFormData = this.registerForm.value;
+      this.servicesService.registerUser(registerFormData);
+      console.log(this.registerForm.value);
+      // this.router.navigate(['/usuarios']);
     }
   }
 
@@ -41,4 +58,3 @@ export class LoginUserPageComponent implements OnInit {
     this.showLoginForm = !this.showLoginForm;
   }
 }
-
