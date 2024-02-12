@@ -19,7 +19,9 @@ export class AdsFormComponent implements OnInit {
     titulo: new FormControl(""),
     tipoPropiedad: new FormControl(""),
     tipoEspacio: new FormControl(""),
-    direccion: new FormControl(""),
+    capacidad: new FormControl(""),
+    imagen: new FormControl(""),
+    localizacion: new FormControl(""),
     disponible: new FormControl(true),
   });
 
