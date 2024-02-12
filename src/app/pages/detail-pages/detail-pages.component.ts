@@ -11,21 +11,6 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
   styleUrls: ['./detail-pages.component.css']
 })
 export class DetailPagesComponent {
-  // id!: any;
-  // user!: interUsers;
-
-  // constructor(
-  //   private servicio: ServiceService,
-  //   private rutaActivada: ActivatedRoute
-  // ) {}
-
-  // ngOnInit(): void {
-  //   this.rutaActivada.paramMap.subscribe(params => {
-  //     this.id = Number(params.get("id"));
-  //     this.servicio.getUsersByiD(this.id).subscribe((data: any) => {
-  //       this.user = data;
-  //     });
-  //   });
-  // }
+ 
 }
 
