@@ -7,11 +7,17 @@ import { Observable } from 'rxjs';
 })
 export class ServicesService {
 
-  private apiUrl = 'https://api-two-sigma.vercel.app/api/estaciones';
+  private apiUrl = 'https://api-plum-six.vercel.app/api/estaciones';
+  private apiUrl2 = `https://api-plum-six.vercel.app/user`;
+
+
 
   constructor(private http: HttpClient) {}
 
   getAllUsers(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);
+  }
+  geUserId(id:any):Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl2}/${id}`);
   }
 }
