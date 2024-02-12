@@ -1,41 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <section>
-        <div>
-            <h1>Encuentra tu guardian</h1>
-        </div>
-        <div>
-            <form [formGroup]="profileForm" (ngSubmit)="OnSearch()" >    
-                
-                <select formControlName="addressForm" placeholder="donde de encuentras"  type="text" name="adressForm" id="adressForm">
-                    <option>Barcelona</option>
-                </select>
-                <input formControlName="dayPutForm" placeholder="Deposito"  type="date" name="dayPutForm" id="dayPutForm">
-                <input formControlName="dayOutForm" placeholder="Retirada"  type="date" name="dayOutForm" id="dayOutForm">
-            <button (click)="OnSearch()">Buscar</button>
-            </form>
-        </div>
-        <section>
-            <div>
-                <h1>Novedades</h1>
-                <p>aqui un scroll lateral con el blog con varios blog</p>
+      <div>
+        <h1>Encuentra tu guardian</h1>
+      </div>
+      <div>
+        <form [formGroup]="profileForm" (ngSubmit)="OnSearch()">
+          <select
+            formControlName="addressForm"
+            placeholder="donde de encuentras"
+            type="text"
+            name="adressForm"
+            id="adressForm"
+          >
+            <option>Barcelona</option>
+          </select>
+          <input
+            formControlName="dayPutForm"
+            placeholder="Deposito"
+            type="date"
+            name="dayPutForm"
+            id="dayPutForm"
+          />
+          <input
+            formControlName="dayOutForm"
+            placeholder="Retirada"
+            type="date"
+            name="dayOutForm"
+            id="dayOutForm"
+          />
+          <button (click)="OnSearch()">Buscar</button>
+        </form>
+      </div>
+      <section>
+        <div class="novedades">
+          <h1>Novedades</h1>
+          <!-- Aquí los blogs deben hacer scroll -->
+          <div class="blog-container">
+            <div class="blog">
+              <p class="blog1">
+                Nuevo artículo de nuestro viajero empedernido.
+              </p>
+              <button class="leer">Leer más</button>
             </div>
-            <div>
-                <h1>Experiencias</h1>
-                <p>aqui info añadianco mas con un boton</p>
-
-                <button>Mostrar más</button>
+            <div class="blog">
+              <p class="blog2">Los lugares más visitados en 2023.</p>
+              <button class="leer">Leer más</button>
             </div>
-        </section>
+            <div class="blog">
+              <p class="blog3">Cómo ahorrar para viajar por el mundo.</p>
+              <button class="leer">Leer más</button>
+            </div>
+            <div class="blog">
+              <p class="blog4">
+                Viajar con niños pequeños y sobrevivir a ello.
+              </p>
+              <button class="leer">Leer más</button>
+            </div>
+          </div>
+        </div>
+        <div class="Experiencias-container">
+          <h1>Experiencias</h1>
+          <img src="../../../assets/exp1.png">
+          <div class="exp1">
+          <h3>Un pedacito de Italia en Gijón</h3>
+          <p>Sin lugar a duda es uno de los destinos gastronómicos  por excelencia de esta gran ciudad situada en el norte de España.</p>
+        </div>
+        <div class="exp2">
+        <img src="../../../assets/exp2.png">
+        <h3>Sumérgete en Barcelona</h3>
+          <p>Si estás dispuesto a aventurarte en el mundo del submarinismo y venir a sentir una vivencia insólita en L’Aquàrium.</p>
+        </div>
 
-
+          <button class="mostrarMas">Mostrar más</button>
+        </div>
+      </section>
     </section>
-    
-</body>
+  </body>
 </html>
