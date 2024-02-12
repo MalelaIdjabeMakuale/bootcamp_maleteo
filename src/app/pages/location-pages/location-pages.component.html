@@ -13,7 +13,9 @@
         <div>
             <form [formGroup]="profileForm" (ngSubmit)="OnSearch()" >    
                 
-                <input formControlName="addressForm" placeholder="donde de encuentras"  type="text" name="adressForm" id="adressForm">
+                <select formControlName="addressForm" placeholder="donde de encuentras"  type="text" name="adressForm" id="adressForm">
+                    <option>Barcelona</option>
+                </select>
                 <input formControlName="dayPutForm" placeholder="Deposito"  type="date" name="dayPutForm" id="dayPutForm">
                 <input formControlName="dayOutForm" placeholder="Retirada"  type="date" name="dayOutForm" id="dayOutForm">
             <button (click)="OnSearch()">Buscar</button>

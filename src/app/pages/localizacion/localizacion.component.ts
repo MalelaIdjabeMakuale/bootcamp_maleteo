@@ -30,7 +30,7 @@ export class LocalizacionComponent implements OnInit {
   getLocation(): void {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
-        alert(position.coords.latitude + ' ' + position.coords.longitude);
+        // alert(position.coords.latitude + ' ' + position.coords.longitude); // alerta de posicion
         this.lat = position.coords.latitude;
         this.lon = position.coords.longitude;
         this.createMap();
@@ -54,7 +54,6 @@ export class LocalizacionComponent implements OnInit {
       .bindPopup(`soylocker geoloc`)
       .openPopup();
 
-    // Utiliza los datos de this.allusers para crear marcadores según sea necesario
     this.allusers.forEach((element) => {
       const markerItem = marker([
         element.location.latitude,
@@ -69,6 +68,5 @@ export class LocalizacionComponent implements OnInit {
         console.log(element.name);
       });
     });
-   
   }
 }
