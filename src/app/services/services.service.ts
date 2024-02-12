@@ -14,4 +14,11 @@ export class ServicesService {
   getAllUsers(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);
   }
+  
+  //funcion para hacer get para los anuncios detalle
+  getEstablecimientoById(id: string): Observable<any> {
+    const url = `${this.apiUrl}/${id}`; 
+
+    return this.http.get<any>(url);
+  }
 }
