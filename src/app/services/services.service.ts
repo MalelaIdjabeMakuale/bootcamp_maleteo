@@ -20,4 +20,10 @@ export class ServicesService {
   geUserId(id:any):Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl2}/${id}`);
   }
+  //funcion para hacer get para los anuncios detalle
+  getEstablecimientoById(id: string): Observable<any> {
+    const url = `${this.apiUrl}/${id}`; 
+
+    return this.http.get<any>(url);
+  }
 }

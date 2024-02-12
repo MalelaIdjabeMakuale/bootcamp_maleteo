@@ -14,11 +14,11 @@ import { AdsListComponent } from './pages/ads/ads-list/ads-list.component';
 
 export const routes: Routes = [{path:'', component: LandingPageComponent},
 {path:'home', component: HomePageComponent},
-{path:'registro/usuario', component:LoginUserPageComponent},
+{path:'registro', component:LoginUserPageComponent},
 {path:'usuarios', component: UsersPageComponent},
 {path:'usuarios/:id', component: DetailPagesComponent}, 
 {path: 'ubicacion', component: LocationPagesComponent},
-{path: 'registro/anuncio', component: AdsFormComponent},
+{path: 'anuncio/registro', component: AdsFormComponent},
 {path: 'anuncios', component: AdsListComponent},
 {path: 'anuncios/:id', component: AdsDetailComponent},
 {path: 'localizacion', component: LocalizacionComponent}
