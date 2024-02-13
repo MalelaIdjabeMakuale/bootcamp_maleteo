@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles de Reserva</title>
+    <link rel="stylesheet" href="reserva-detalle.component.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Detalles de tu reserva</h1>
+        <div>
+            <p>Llegada: <span id="arrivalDate"></span></p>
+            <p>Salida: <span id="departureDate"></span></p>
+            <p>Número de equipaje: <span id="luggageCount"></span></p>
+            <p>Precio por día: <span id="pricePerDay"></span>€</p>
+            <p>Gastos de gestión: 2€</p>
+            <p>Total: <span id="totalAmount"></span>€</p>
+        </div>
+        <button (click)="reservar()">Reservar</button>
+
+    </div>
+</body>
+</html>
