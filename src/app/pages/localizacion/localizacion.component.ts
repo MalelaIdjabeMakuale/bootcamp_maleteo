@@ -56,8 +56,8 @@ export class LocalizacionComponent implements OnInit {
 
     this.allusers.forEach((element) => {
       const markerItem = marker([
-        element.location.latitude,
-        element.location.longitude,
+        element.latitude,
+        element.longitude,
       ])
         .addTo(map)
         .bindPopup(`soylocker ${element.name}`)
