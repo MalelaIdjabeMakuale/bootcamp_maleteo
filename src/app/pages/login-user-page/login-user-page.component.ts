@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormGroup,
-  FormControl,
-  ReactiveFormsModule,
-} from '@angular/forms';
+import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ServicesService } from '../../services/services.service';
 
@@ -15,8 +11,7 @@ import { ServicesService } from '../../services/services.service';
   styleUrls: ['./login-user-page.component.css'],
 })
 export class LoginUserPageComponent implements OnInit {
-
-  ngOnInit(): void {  }
+  ngOnInit(): void {}
 
   showLoginForm: boolean = true;
   showRegisterForm: boolean = false;
@@ -24,10 +19,10 @@ export class LoginUserPageComponent implements OnInit {
   constructor(
     private router: Router,
     private servicesService: ServicesService
-  ) { }
-  
+  ) {}
+
   registerForm: FormGroup = new FormGroup({
-    email: new FormControl(""),
+    email: new FormControl(''),
     userName: new FormControl(''),
     name: new FormControl(''),
     surname: new FormControl(''),
@@ -44,14 +39,32 @@ export class LoginUserPageComponent implements OnInit {
     if (this.showLoginForm && this.loginForm.valid) {
       const loginFormData = this.loginForm.value;
 
-      this.servicesService.loginUser(loginFormData);
-      console.log(this.loginForm.value);
-      // this.router.navigate(['/usuarios']);
+      this.servicesService.loginUser(loginFormData).subscribe((response) => {
+        console.log('Login successful', response);
+        console.log(this.loginForm.value);
+        // this.router.navigate(['/usuarios']);
+      });
+  
     } else if (!this.showLoginForm && this.registerForm.valid) {
-      const registerFormData = this.registerForm.value;
-      this.servicesService.registerUser(registerFormData);
-      console.log(this.registerForm.value);
-      // this.router.navigate(['/usuarios']);
+      const password = this.registerForm.get('password')?.value;
+      const confirmPassword = this.registerForm.get('confirmPassword')?.value;
+
+      if (password === confirmPassword) {
+        const registerFormData = this.registerForm.value;
+        this.servicesService.registerUser(registerFormData).subscribe(
+          (response) => {
+            console.log('Register successful', response);
+            console.log(this.registerForm.value);
+            // this.router.navigate(['/usuarios']);
+          },
+          (error) => {
+            console.error('Error during login: ', error);
+          }
+        );
+
+      } else {
+        alert('Las contraseñas no son iguales');
+      }
     }
   }
 
