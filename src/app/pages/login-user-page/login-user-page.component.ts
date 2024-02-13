@@ -27,15 +27,16 @@ export class LoginUserPageComponent implements OnInit {
   ) { }
   
   registerForm: FormGroup = new FormGroup({
-    username: new FormControl(''),
-    nombre: new FormControl(''),
-    apellidos: new FormControl(''),
+    email: new FormControl(""),
+    userName: new FormControl(''),
+    name: new FormControl(''),
+    surname: new FormControl(''),
     password: new FormControl(''),
     confirmPassword: new FormControl(''),
   });
 
   loginForm: FormGroup = new FormGroup({
-    username: new FormControl(''),
+    userName: new FormControl(''),
     password: new FormControl(''),
   });
 

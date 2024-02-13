@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { user } from '../interfaces/user_interface';
 
 @Injectable({
   providedIn: 'root'
@@ -30,11 +31,11 @@ export class ServicesService {
     return this.http.post<any>(this.apiUrl, coordenadas);
   }
   //funcion para enviar los datos del formulario a iniciar sesion:
-  loginUser(formData:any):Observable<any>{
-    return this.http.post<any>(`${this.apiUrl}/login`, formData)
+  loginUser(user:user):Observable<any>{
+    return this.http.post<any>(`${this.apiUrl2}/login`, user)
   }
   //lo mismo pero para registrarse
-  registerUser(formData:any):Observable<any>{
-    return this.http.post<any>(`${this.apiUrl}`, formData)
+  registerUser(user:user):Observable<any>{
+    return this.http.post<any>(`${this.apiUrl2}/register`, user)
   }
 }

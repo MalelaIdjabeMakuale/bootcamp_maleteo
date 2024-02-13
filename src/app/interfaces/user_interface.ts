@@ -1,9 +1,9 @@
 export interface user{
+    userName:string,
     name:string,
+    surname:string
     pasword:string,
-    image: string,
-    location:{
-        latitude:number,
-        longitude:number,
+    img:string,
+    email:string
+    estaciones:any;
     }
-}
