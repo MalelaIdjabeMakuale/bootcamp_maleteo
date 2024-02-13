@@ -1,5 +1,5 @@
 <h2>Describenos tu espacio:</h2>
-<form formGroup="anuncioForm">
+<form [formGroup]="anuncioForm" (ngSubmit)="onSubmit()">
     <div>
         <label for="name">Título de tu propiedad:</label>
         <input type="text" id="name" formControlName="name">
@@ -13,8 +13,8 @@
         </select>
     </div>
     <div>
-        <label for="spaceType">Tipo de espacio:</label>
-        <select id="spaceType" formControlName="spaceType">
+        <label for="propertySpace">Tipo de espacio:</label>
+        <select id="propertySpace" formControlName="propertySpace">
             <option value="Habitación">Habitación</option>
             <option value="Hall">Hall</option>
             <option value="Trastero">Trastero</option>
@@ -24,12 +24,16 @@
         </select>
     </div>
     <div>
-        <label for="location">Localización de tu propiedad:</label>
-        <input type="text" id="location" formControlName="location">
+        <label for="latitude">Latitud de tu propiedad:</label>
+        <input type="text" id="latitude" formControlName="latitude">
+    </div>
+    <div>
+        <label for="longitude">Longitud de tu propiedad:</label>
+        <input type="text" id="longitude" formControlName="longitude">
     </div>
     <div>
         <label for="img">Imagen de tu propiedad:</label>
-        <input type="file" id="img" formControlName="img">
+        <input type="text" id="img" formControlName="img">
     </div>
     <div>
         <label for="capacity">Capacidad de tu propiedad:</label>
