@@ -46,15 +46,19 @@ export class AdsFormComponent {
         (response) => {
 
           console.log('Register successful', response.estacion._id);
-<<<<<<< HEAD
+
+          const userId = '65cb327daa6ed0eb1f2d54a4'; //aqui tengo que meter la logica para sacar el id del user
+          const locker = response.estacion;
+
+          this.servicesService.updateUser(userId, locker).subscribe(()=>{
+            console.log('Usuario actualizado con la estacion');
+            
+          }, (error)=>{
+            console.error('Error al actualizar el usuario', error);
+            
+          })
 
 
-=======
-          console.log(response);
-          
-          
-          
->>>>>>> origin/formularios
           // this.router.navigate(['/anuncios']);
         },
         (error) => {

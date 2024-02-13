@@ -39,4 +39,9 @@ export class ServicesService {
   registerUser(user:user):Observable<any>{
     return this.http.post<any>(`${this.apiUrl2}/register`, user)
   }
+  updateUser(userId:string, locker:string):Observable<any>{
+    const updateUrl = `${this.apiUrl2}/register/${userId}`;
+    const body={locker};
+    return this.http.patch(updateUrl, body);
+  }
 }
