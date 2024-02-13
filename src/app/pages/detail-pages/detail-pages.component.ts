@@ -9,29 +9,26 @@ import { ServicesService } from '../../services/services.service';
   templateUrl: './detail-pages.component.html',
   styleUrls: ['./detail-pages.component.css']
 })
-export class DetailPagesComponent {id!:any;
+export class DetailPagesComponent {
+  id!:string | null;
   user!:user;
-  constructor(
-   private servicio:ServicesService,
-    private rutaActivada: ActivatedRoute
-  ) {}
+  constructor(private servicio:ServicesService,private rutaActivada: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.rutaActivada.paramMap.subscribe(params =>{
-    
-
-    this.id =Number(params.get("id"))
-    
-
-
-    });
-
-    this.servicio.getUserId(this.id).subscribe((data: any) => {
-      this.user = data;
-    });
-  }
-
-
- 
+    this.id = params.get("id");
+    this.getData();
+  });
 }
 
+getData(){
+  this.servicio.getUserId(this.id).subscribe((data:any) => {
+    console.log(data)
+    this.user = data.data;
+  },
+  (error: any) => {
+    console.error('Error fetching user data:', error);
+    }
+);
+}
+}
