@@ -48,10 +48,12 @@ export class AdsFormComponent {
           console.log('Register successful', response.estacion._id);
 
 
+
+
           console.log(response);
           
           
-          
+
           // this.router.navigate(['/anuncios']);
         },
         (error) => {
