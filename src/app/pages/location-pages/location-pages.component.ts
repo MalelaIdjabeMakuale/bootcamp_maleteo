@@ -1,16 +1,20 @@
 import { Component } from '@angular/core';
 import {ReactiveFormsModule ,FormControl, FormGroup} from '@angular/forms';
+import { RouterLink } from '@angular/router';
+
 
 
 
 @Component({
   selector: 'app-location-pages',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,RouterLink],
   templateUrl: './location-pages.component.html',
   styleUrl: './location-pages.component.css'
 })
 export class LocationPagesComponent {
+
+  
 
   profileForm = new FormGroup({
     addressForm: new FormControl(''),
@@ -20,8 +24,13 @@ export class LocationPagesComponent {
     
   });
 
+ 
+
   OnSearch(){
     console.warn(this.profileForm.value);
-    
+  
   }
+
+ 
 }
+

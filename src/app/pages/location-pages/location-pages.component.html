@@ -11,7 +11,7 @@
         <h1>Encuentra tu guardian</h1>
       </div>
       <div>
-        <form [formGroup]="profileForm" (ngSubmit)="OnSearch()">
+        <form [formGroup]="profileForm" (ngSubmit)="OnSearch()" action="/localizacion"> 
           <select
             formControlName="addressForm"
             placeholder="donde de encuentras"
@@ -35,7 +35,12 @@
             name="dayOutForm"
             id="dayOutForm"
           />
-          <button (click)="OnSearch()">Buscar</button>
+          <input formControlName="capacity"
+          placeholder="1"
+          type="number"
+          id="capacity">
+         
+          <button (click)="OnSearch()" routerLink="/localizacion">Buscar</button>
         </form>
       </div>
       <section>
