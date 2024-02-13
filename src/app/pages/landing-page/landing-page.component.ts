@@ -1,12 +1,13 @@
 
 import { CommonModule } from '@angular/common';
 import { Component,OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './landing-page.component.html',
   styleUrl: './landing-page.component.css'
 })
