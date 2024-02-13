@@ -1,15 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f0f0f0e2;
+  padding: 5px 20px 20px 100px;
 
-.navbar ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    justify-content: space-around;
 }
 
-.navbar ul li {
-    display: inline-block;
-   
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.navbar li {
+  flex: 1;
+  text-align: center;
+}
+
+.navbar li img {
+  width: 42px;
+  height: 42px;
 }

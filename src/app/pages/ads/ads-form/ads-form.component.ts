@@ -25,6 +25,8 @@ export class AdsFormComponent {
     longitude: new FormControl(''),
   });
 
+
+
   constructor(
     private formbuilder: FormBuilder,
     private router: Router,
@@ -38,10 +40,10 @@ export class AdsFormComponent {
 
       this.servicesService.registerLocker(formValue).subscribe(
         (response) => {
-       
+
           console.log('Register successful', response.estacion._id);
-          
-          
+
+
           // this.router.navigate(['/anuncios']);
         },
         (error) => {
