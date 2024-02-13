@@ -31,7 +31,7 @@ export class LoginUserPageComponent implements OnInit {
   });
 
   loginForm: FormGroup = new FormGroup({
-    userName: new FormControl(''),
+    name: new FormControl(''),
     password: new FormControl(''),
   });
 
@@ -41,14 +41,17 @@ export class LoginUserPageComponent implements OnInit {
 
       this.servicesService.loginUser(loginFormData).subscribe((response) => {
         console.log('Login successful', response);
+        console.log('Login successful', response.data.token);
+        localStorage.setItem('token',response.data.token );
+        localStorage.setItem('id_user',response.data.user._id );
+
         console.log(this.loginForm.value);
-        // this.router.navigate(['/usuarios']);
+        this.router.navigate(['/home']);
       });
   
     } else if (!this.showLoginForm && this.registerForm.valid) {
       const password = this.registerForm.get('password')?.value;
       const confirmPassword = this.registerForm.get('confirmPassword')?.value;
-
       if (password === confirmPassword) {
         const registerFormData = this.registerForm.value;
         this.servicesService.registerUser(registerFormData).subscribe(

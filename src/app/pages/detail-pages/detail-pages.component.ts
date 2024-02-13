@@ -15,10 +15,9 @@ export class DetailPagesComponent {
   constructor(private servicio:ServicesService,private rutaActivada: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.rutaActivada.paramMap.subscribe(params =>{
-    this.id = params.get("id");
+console.log
+    this.id = localStorage.getItem('id_user');
     this.getData();
-  });
 }
 
 getData(){

@@ -33,7 +33,7 @@ export class ServicesService {
   }
   //funcion para enviar los datos del formulario a iniciar sesion:
   loginUser(user:user):Observable<any>{
-    return this.http.post<any>(`${this.apiUrl2}/login`, user)
+    return this.http.post<any>(`${this.apiUrl2}/authenticate`, user)
   }
   //lo mismo pero para registrarse
   registerUser(user:user):Observable<any>{
