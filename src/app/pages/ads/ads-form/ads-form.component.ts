@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ServicesService } from '../../../services/services.service';
 
@@ -21,8 +21,9 @@ export class AdsFormComponent {
     capacity: new FormControl(''),
     img: new FormControl(''),
     available: new FormControl(true),
-    latitude: new FormControl(''),
     longitude: new FormControl(''),
+    latitude: new FormControl(''),
+
   });
 
 
@@ -37,13 +38,23 @@ export class AdsFormComponent {
     if (this.anuncioForm && this.anuncioForm.valid) {
 
       const formValue = this.anuncioForm.value;
+      console.log(formValue);
+      
+      
 
       this.servicesService.registerLocker(formValue).subscribe(
         (response) => {
 
           console.log('Register successful', response.estacion._id);
+<<<<<<< HEAD
 
 
+=======
+          console.log(response);
+          
+          
+          
+>>>>>>> origin/formularios
           // this.router.navigate(['/anuncios']);
         },
         (error) => {
