@@ -10,11 +10,16 @@ import { Component,OnInit } from '@angular/core';
   templateUrl: './landing-page.component.html',
   styleUrl: './landing-page.component.css'
 })
-export class LandingPageComponent { showModal = true;
+export class LandingPageComponent implements OnInit { showModal = false;
   showModal2 = false;
 
+
   ngOnInit(): void {
+    setTimeout(() => {
+      this.showModal = true;
+    }, 2000);
   }
+
   closeModal(id:string) {
     if (id === 'showModal' ){
 
@@ -25,4 +30,6 @@ export class LandingPageComponent { showModal = true;
       this.showModal2 = false;
     }
   };
+
+  
 }

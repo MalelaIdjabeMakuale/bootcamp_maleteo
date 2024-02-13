@@ -6,7 +6,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ServicesService } from '../../services/services.service';
-
+import { user } from '../../interfaces/user_interface';
 @Component({
   selector: 'app-login-user-page',
   standalone: true,
@@ -47,15 +47,20 @@ export class LoginUserPageComponent implements OnInit {
       this.servicesService.loginUser(loginFormData);
       console.log(this.loginForm.value);
       // this.router.navigate(['/usuarios']);
-    } else if (!this.showLoginForm && this.registerForm.valid) {
-      const registerFormData = this.registerForm.value;
-      this.servicesService.registerUser(registerFormData);
-      console.log(this.registerForm.value);
-      // this.router.navigate(['/usuarios']);
-    }
-  }
+    } 
+    else if (!this.showLoginForm && this.registerForm.valid) {
+      const registerFormData:user = this.registerForm.value;
+      this.servicesService.registerUser(registerFormData).subscribe((response)=>{
+        console.log('Login successful', response);
+      },
+      (error) => {
+        console.error('Error during login', error);
+        // Manejar el error según sea necesario
+      }
+    )};
 
-  toggleForm() {
+  }
+  toggleForm(){
     this.showLoginForm = !this.showLoginForm;
   }
 }
