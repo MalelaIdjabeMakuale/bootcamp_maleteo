@@ -26,9 +26,10 @@ export class ServicesService {
     const url = `${this.apiUrl}/${id}`; 
     return this.http.get<any>(url);
   }
-  //funcion para guardar las coordenadas longitude y latitude al hacer el formulario
-  guardarCoordenadas(coordenadas: {latitude:number, longitude:number}): Observable<any>{
-    return this.http.post<any>(this.apiUrl, coordenadas);
+  //funcion para registrar locker(estacion):
+  registerLocker(locker:any):Observable<any>{
+    const url=`${this.apiUrl}`;
+    return this.http.post<any>(url, locker);
   }
   //funcion para enviar los datos del formulario a iniciar sesion:
   loginUser(user:user):Observable<any>{
