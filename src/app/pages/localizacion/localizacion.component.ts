@@ -22,9 +22,12 @@ export class LocalizacionComponent implements OnInit {
 
   lat: any;
   lon: any;
+  loading:boolean;
 
 
-  constructor(private servicio: ServicesService) {}
+  constructor(private servicio: ServicesService) {
+    this.loading = true;
+  }
 
   ngOnInit(): void {
     this.servicio.getAllUsers().subscribe((data: any) => {
@@ -53,7 +56,8 @@ export class LocalizacionComponent implements OnInit {
       attribution:
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(map);
-    
+    this.loading = false;
+
     const markerGeoloc = marker([
       this.lat,
       this.lon,
@@ -78,8 +82,8 @@ export class LocalizacionComponent implements OnInit {
        this.selectedLockerAvi = element.avi;
        this.selectedLockerPropertySpace = element.propertySpace;
        this.selectedPropertyTipe = element.propertyTipe;
-    
-       localStorage.setItem("selectedLockeId", element._id )      
+
+       localStorage.setItem("selectedLockeId", element._id )
       });
 
 

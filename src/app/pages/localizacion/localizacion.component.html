@@ -2,12 +2,18 @@
 
 
 <div id="map"></div>
+<div class="container">
+  <div class="text-container">
 <h1>Locker seleccionado</h1>
-<h3>Nombre:{{selectedLockerName}} </h3>
+<h3>Nombre: {{selectedLockerName}} </h3>
 <h3>Capacidad de la propiedad: {{selectedLockerCapacity}}</h3>
 <h3>Tipo de propiedad: {{selectedLockerPropertySpace}}</h3>
 <h3>Tipo de espacio: {{selectedPropertyTipe}}</h3>
 <h3>Disponibilidad: {{selectedLockerAvi}}</h3>
+</div>
+<div class="img-container">
 <img src="{{selectedLockerImg}}" alt="{{selectedLockerName}}">
+</div>
+</div>
 <button routerLink="/reserva">Botoncito</button>
 
