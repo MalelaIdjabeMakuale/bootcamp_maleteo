@@ -26,7 +26,7 @@ export class AdsFormComponent {
     propertySpace: new FormControl(''),
     capacity: new FormControl(''),
     img: new FormControl(''),
-    available: new FormControl(true),
+    aviable: new FormControl(true),
     longitude: new FormControl(''),
     latitude: new FormControl(''),
   });
@@ -48,11 +48,15 @@ export class AdsFormComponent {
 
           console.log(response);
 
-          const userId = '65cb327daa6ed0eb1f2d54a4'; //aqui tengo que meter la logica para sacar el id del user
+          const userId = localStorage.getItem('id_user'); //aqui tengo que meter la logica para sacar el id del user
           const locker = response.estacion;
+          const lockerUpdate = {estaciones:locker._id}
+          console.log("soy de el antes update id locker ",locker._id)
+          this.servicesService.updateUser(userId,lockerUpdate).subscribe(
+            (response) => {
+              console.log("soy la response",response)
+              console.log("soy de el update",userId)
 
-          this.servicesService.updateUser(userId, locker).subscribe(
-            () => {
               console.log('Usuario actualizado con la estacion');
             },
             (error) => {
