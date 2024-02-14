@@ -6,11 +6,12 @@
     <title>Document</title>
   </head>
   <body>
-    <section>
+
+    <section class="container">
       <div>
         <h1>Encuentra tu guardian</h1>
       </div>
-      <div>
+      <div class="container">
         <form [formGroup]="profileForm" (ngSubmit)="OnSearch()" action="/localizacion"> 
           <select
             formControlName="addressForm"
@@ -43,26 +44,26 @@
           <button (click)="OnSearch()" routerLink="/localizacion">Buscar</button>
         </form>
       </div>
-      <section>
+      <section class="container">
         <div class="novedades">
           <h1>Novedades</h1>
           <!-- Aquí los blogs deben hacer scroll -->
           <div class="blog-container">
-            <div class="blog">
+            <div class="blogA">
               <p class="blog1">
                 Nuevo artículo de nuestro viajero empedernido.
               </p>
               <button class="leer">Leer más</button>
             </div>
-            <div class="blog">
+            <div class="blogB">
               <p class="blog2">Los lugares más visitados en 2023.</p>
               <button class="leer">Leer más</button>
             </div>
-            <div class="blog">
+            <div class="blogC">
               <p class="blog3">Cómo ahorrar para viajar por el mundo.</p>
               <button class="leer">Leer más</button>
             </div>
-            <div class="blog">
+            <div class="blogD">
               <p class="blog4">
                 Viajar con niños pequeños y sobrevivir a ello.
               </p>
@@ -87,5 +88,6 @@
         </div>
       </section>
     </section>
+
   </body>
 </html>

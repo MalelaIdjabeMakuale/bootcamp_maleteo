@@ -49,7 +49,7 @@ export class AdsFormComponent {
           console.log(response);
 
           const userId = localStorage.getItem('id_user'); //aqui tengo que meter la logica para sacar el id del user
-          const locker = response.estacion;
+          const locker = response.estacion_id;
           const lockerUpdate = {estaciones:locker._id}
           console.log("soy de el antes update id locker ",locker._id)
           this.servicesService.updateUser(userId,lockerUpdate).subscribe(
