@@ -2,7 +2,23 @@
 
 
 <div id="map"></div>
-<h1>Locker seleccionado</h1>
+
+
+
+<div>
+
+    @if (isLoading) {  <div>
+        <div class="loading-container">
+          <div class="loader"></div>
+        </div>
+        <h1>Cargando mapa...</h1>
+      </div>
+    
+    }
+   
+@if (!isLoading) {  <div class="selectedLocker">
+<div id="map"></div>
+    <h1>Locker seleccionado</h1>
 <h3>Nombre:{{selectedLockerName}} </h3>
 <h3>Capacidad de la propiedad: {{selectedLockerCapacity}}</h3>
 <h3>Tipo de propiedad: {{selectedLockerPropertySpace}}</h3>
@@ -11,3 +27,9 @@
 <img src="{{selectedLockerImg}}" alt="{{selectedLockerName}}">
 <button routerLink="/reserva">Botoncito</button>
 
+</div>  
+}
+  
+ 
+  
+  

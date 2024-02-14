@@ -19,9 +19,10 @@ export class LocalizacionComponent implements OnInit {
   selectedLockerImg: string = '';
   selectedLockerAvi: string = '';
   selectedPropertyTipe: string = '';
-
   lat: any;
   lon: any;
+
+  isLoading = true;
 
 
   constructor(private servicio: ServicesService) {}
@@ -35,6 +36,8 @@ export class LocalizacionComponent implements OnInit {
     });
   }
 
+
+
   getLocation(): void {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -47,12 +50,16 @@ export class LocalizacionComponent implements OnInit {
   }
 
   createMap(): void {
+    this.isLoading = true;
+
     const map = new Map('map').setView([41.3851, 2.1734], 13);
     tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
       attribution:
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(map);
+    this.isLoading = false;
+
     
     const markerGeoloc = marker([
       this.lat,
