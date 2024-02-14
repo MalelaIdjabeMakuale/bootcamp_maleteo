@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { ServicesService } from '../../services/services.service';
 @Component({
   selector: 'app-reserva-detalle',
   standalone: true,
@@ -9,21 +9,37 @@ import { Router } from '@angular/router';
   styleUrl: './reserva-detalle.component.css'
 })
 export class ReservaDetalleComponent {
-  constructor(private router: Router) { }
+  constructor(private router: Router, private servicesService:ServicesService) { }
+  idLocker = localStorage.getItem("selectedLocker")
+  lockerUpdate = {bookings: "soyReserva1"}
+
 
   reservar(): void {
+    this.servicesService.updateLocker(this.idLocker,this.lockerUpdate).subscribe(
+      (response) => {
+
+        console.log("soy la response",response)
+
+        console.log('Usuario actualizado con la estacion');
+      },
+      (error) => {
+        console.error('Error al actualizar el usuario', error);
+      }
+    );
+
+
     alert('¡Reserva realizada!');
     this.router.navigate(['/otra-pagina']);//poner el componente de reserva realizada
   }
 
   ngOnInit(): void {
 
-    const arrivalDate = '2024-02-20';
-    const departureDate = '2024-02-25';
+    const arrivalDate = localStorage.getItem("dayPutForm");
+    const departureDate =  localStorage.getItem("dayOutForm");
     const luggageCount = 2;
     const pricePerDay = 6;
 
-    const totalAmount = (pricePerDay * this.getNumberOfDays(arrivalDate, departureDate)) + 2;
+    const totalAmount =  (pricePerDay * this.getNumberOfDays(arrivalDate!, departureDate!)) + 2;
 
     const arrivalDateElement = document.getElementById('arrivalDate');// Obtenemos el elemento con ID 'arrivalDate'
     if (arrivalDateElement) {

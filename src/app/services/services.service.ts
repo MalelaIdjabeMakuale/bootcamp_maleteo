@@ -44,4 +44,9 @@ export class ServicesService {
     const body= locker;
     return this.http.patch(updateUrl, body);
   }
+  updateLocker(userId:any, locker:any):Observable<any>{
+    const updateUrl = `${this.apiUrl}/${userId}`;
+    const body= locker;
+    return this.http.patch(updateUrl, body);
+  }
 }

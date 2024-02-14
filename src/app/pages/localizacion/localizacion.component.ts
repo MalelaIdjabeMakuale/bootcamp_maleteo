@@ -79,10 +79,9 @@ export class LocalizacionComponent implements OnInit {
        this.selectedLockerPropertySpace = element.propertySpace;
        this.selectedPropertyTipe = element.propertyTipe;
     
- 
+       localStorage.setItem("selectedLockeId", element._id )      
       });
 
-      
 
     });
   }
