@@ -32,5 +32,5 @@ export class LandingPageComponent implements OnInit { showModal = false;
     }
   };
 
-  
+
 }
