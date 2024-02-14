@@ -34,6 +34,7 @@ filteredEstaciones: InterfaceEstaciones[] = [];
 
 constructor(private servicio:EstacionesService) {}
 OnSearch() {
+  console.log(this.profileForm)
   const numObjectsControl = this.profileForm.get('numObjectsForm');
   if (numObjectsControl) {
     const numObjects = numObjectsControl.value;
