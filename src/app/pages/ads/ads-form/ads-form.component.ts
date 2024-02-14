@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { ServicesService } from '../../../services/services.service';
 
@@ -23,10 +29,7 @@ export class AdsFormComponent {
     available: new FormControl(true),
     longitude: new FormControl(''),
     latitude: new FormControl(''),
-
   });
-
-
 
   constructor(
     private formbuilder: FormBuilder,
@@ -36,23 +39,26 @@ export class AdsFormComponent {
 
   async onSubmit() {
     if (this.anuncioForm && this.anuncioForm.valid) {
-
       const formValue = this.anuncioForm.value;
       console.log(formValue);
-      
-      
 
       this.servicesService.registerLocker(formValue).subscribe(
         (response) => {
-
           console.log('Register successful', response.estacion._id);
 
-
-
-
           console.log(response);
-          
-          
+
+          const userId = '65cb327daa6ed0eb1f2d54a4'; //aqui tengo que meter la logica para sacar el id del user
+          const locker = response.estacion;
+
+          this.servicesService.updateUser(userId, locker).subscribe(
+            () => {
+              console.log('Usuario actualizado con la estacion');
+            },
+            (error) => {
+              console.error('Error al actualizar el usuario', error);
+            }
+          );
 
           // this.router.navigate(['/anuncios']);
         },
