@@ -46,7 +46,7 @@ export class LoginUserPageComponent implements OnInit {
         localStorage.setItem('id_user',response.data.user._id );
 
         console.log(this.loginForm.value);
-        this.router.navigate(['/home']);
+        this.router.navigate(['/ubicacion']);
       });
   
     } else if (!this.showLoginForm && this.registerForm.valid) {
@@ -58,7 +58,7 @@ export class LoginUserPageComponent implements OnInit {
           (response) => {
             console.log('Register successful', response);
             console.log(this.registerForm.value);
-            // this.router.navigate(['/usuarios']);
+            this.router.navigate(['/ubicacion']);
           },
           (error) => {
             console.error('Error during login: ', error);
