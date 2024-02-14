@@ -1,21 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { ServicesService } from '../../services/services.service';
 import { user } from '../../interfaces/user_interface';
-
+import { RouterLink } from '@angular/router';
 import { Map, marker, tileLayer } from 'leaflet';
 
 @Component({
   selector: 'app-localizacion',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './localizacion.component.html',
   styleUrl: './localizacion.component.css',
 })
 export class LocalizacionComponent implements OnInit {
   allusers!: any[];
-  selectedLocker: string = '';
+  selectedLockerName: string = '';
+  selectedLockerCapacity: string = '';
+  selectedLockerPropertySpace: string = '';
+  selectedLockerImg: string = '';
+  selectedLockerAvi: string = '';
+  selectedPropertyTipe: string = '';
+
   lat: any;
   lon: any;
+
+
   constructor(private servicio: ServicesService) {}
 
   ngOnInit(): void {
@@ -64,9 +72,18 @@ export class LocalizacionComponent implements OnInit {
         .openPopup();
 
       markerItem.on('click', () => {
-        this.selectedLocker = element.name;
-        console.log(element.name);
+        this.selectedLockerName = element.name;
+        this.selectedLockerCapacity = element.capacity;
+      this. selectedLockerImg = element.img;
+       this.selectedLockerAvi = element.avi;
+       this.selectedLockerPropertySpace = element.propertySpace;
+       this.selectedPropertyTipe = element.propertyTipe;
+    
+ 
       });
+
+      
+
     });
   }
 }
