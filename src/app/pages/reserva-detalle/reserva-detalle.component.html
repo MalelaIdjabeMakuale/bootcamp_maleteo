@@ -10,12 +10,18 @@
     <div class="container">
         <h1>Detalles de tu reserva</h1>
         <div>
-            <p>Llegada: <span id="arrivalDate"></span></p>
-            <p>Salida: <span id="departureDate"></span></p>
-            <p>Número de equipaje: <span id="luggageCount"></span></p>
-            <p>Precio por día: <span id="pricePerDay"></span>€</p>
-            <p>Gastos de gestión: 2€</p>
-            <p>Total: <span id="totalAmount"></span>€</p>
+            <div class="separacion"><p><b>Llegada: </b> <span id="arrivalDate"></span></p></div>
+            <div class="separacion"><p><b>Salida:</b> <span id="departureDate"></span></p></div>
+            <div class="separacion"><p><b>Número de equipaje: </b><span id="luggageCount"></span></p></div>
+            <div class="separacion"> <p><b>Precio por día: </b><span id="pricePerDay"></span>€</p></div>
+            <div class="separacion"><p><b>Gastos de gestión:</b>2€</p></div>
+            <div class="separacion"><p><b>Total:</b> <span id="totalAmount"></span>€</p></div>
+            
+            
+            
+           
+            
+            
         </div>
         <button (click)="reservar()">Reservar</button>
 

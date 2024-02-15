@@ -1,6 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Catamaran:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.cdnfonts.com/css/gilroy-bold");
+
+
 h1 {
   font-family: "Catamaran", sans-serif;
-  font-size: 40px;
+  font-size: 30px;
 }
 
 body {
@@ -36,3 +40,12 @@ button {
 button:hover {
   background-color: #d17100;
 }
+
+.separacion {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  width: 80%;
+  margin: 5vh;
+}
+
+
