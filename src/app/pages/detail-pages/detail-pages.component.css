@@ -44,3 +44,14 @@
 margin: 5vh;
     }
 }
+button {
+    font-family: "Noto Sans", sans-serif;
+    background-color:#F68F23;
+    color: white;
+    width: 10vh;
+    padding: px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 4vh;
+    cursor: pointer;
+  }

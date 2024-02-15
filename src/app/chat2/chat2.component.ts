@@ -3,6 +3,9 @@ import Pusher from 'pusher-js';
 import { HttpClient } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule,FormControl,FormGroup } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { AuthenticationService } from '../services/authentication.service';
+import { Router } from '@angular/router';
+import swal from 'sweetalert';
 
 
 
@@ -18,13 +21,17 @@ export class Chat2Component implements OnInit {
   message: string = '';
   messages: { username: string, message: string }[] = [];
 
-  constructor(private http: HttpClient, private ngZone: NgZone) { }
+  constructor(private http: HttpClient, private ngZone: NgZone, private authentication:AuthenticationService, private router:Router) { }
   
   
 
 
 
   ngOnInit(): void {
+    if(!this.authentication.isAuthenticated()){
+      swal('¡No puedes acceder si no estas identificado!');
+      this.router.navigate(['/registro'])
+    }
     console.log(this.message);
     Pusher.logToConsole = true;
 

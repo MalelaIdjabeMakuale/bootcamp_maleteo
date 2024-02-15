@@ -29,6 +29,10 @@ console.log
       }
     
 }
+logOut():void{
+  localStorage.removeItem('token');
+  this.router.navigate(['registro'])
+}
 
 getData(){
   this.servicio.getUserId(this.id).subscribe((data:any) => {
