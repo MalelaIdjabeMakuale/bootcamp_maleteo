@@ -1,8 +1,10 @@
 import { EstacionesService } from './../../services/estaciones-service.service';
 import { InterfaceEstaciones } from './../../interfaces/interface-estaciones';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {ReactiveFormsModule ,FormControl, FormGroup} from '@angular/forms';
 import { RouterLink, Router } from '@angular/router';
+import { AuthenticationService } from '../../services/authentication.service';
+import swal from 'sweetalert';
 
 
 
@@ -16,10 +18,15 @@ import { RouterLink, Router } from '@angular/router';
   templateUrl: './location-pages.component.html',
   styleUrl: './location-pages.component.css'
 })
-export class LocationPagesComponent {
-
+export class LocationPagesComponent implements OnInit {
+  ngOnInit(): void {
+    if(!this.authentication.isAuthenticated()){
+      swal('¡No puedes acceder si no estas identificado!');
+      this.router.navigate(['/registro'])
+    }
+  }
   
-  constructor(private router:Router){}
+  constructor(private router:Router, private authentication:AuthenticationService){}
   profileForm = new FormGroup({
     addressForm: new FormControl(''),
     dayPutForm : new FormControl(''),

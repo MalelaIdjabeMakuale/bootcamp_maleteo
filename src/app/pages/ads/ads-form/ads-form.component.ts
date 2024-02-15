@@ -8,6 +8,8 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ServicesService } from '../../../services/services.service';
+import swal from 'sweetalert';
+import { AuthenticationService } from '../../../services/authentication.service';
 
 @Component({
   selector: 'app-ads-form',
@@ -16,7 +18,7 @@ import { ServicesService } from '../../../services/services.service';
   templateUrl: './ads-form.component.html',
   styleUrls: ['./ads-form.component.css'],
 })
-export class AdsFormComponent {
+export class AdsFormComponent implements OnInit{
   propertyType = ['Casa', 'Hotel', 'Establecimiento'];
   propertySpace = ['Habitación', 'Hall', 'Trastero', 'Buhardilla', 'Garaje'];
 
@@ -34,8 +36,16 @@ export class AdsFormComponent {
   constructor(
     private formbuilder: FormBuilder,
     private router: Router,
-    private servicesService: ServicesService
+    private servicesService: ServicesService,
+    private authentication: AuthenticationService
   ) {}
+
+  ngOnInit(): void {
+    if(!this.authentication.isAuthenticated()){
+      swal('¡No puedes acceder si no estas identificado!');
+      this.router.navigate(['/registro'])
+    }
+  }
 
   async onSubmit() {
     if (this.anuncioForm && this.anuncioForm.valid) {

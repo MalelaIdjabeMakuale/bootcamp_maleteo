@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ServicesService } from '../../services/services.service';
+import { AuthenticationService } from '../../services/authentication.service';
+import swal from 'sweetalert';
+
 @Component({
   selector: 'app-reserva-detalle',
   standalone: true,
@@ -8,10 +11,11 @@ import { ServicesService } from '../../services/services.service';
   templateUrl: './reserva-detalle.component.html',
   styleUrl: './reserva-detalle.component.css'
 })
-export class ReservaDetalleComponent {
-  constructor(private router: Router, private servicesService:ServicesService) { }
+export class ReservaDetalleComponent implements OnInit{
+  constructor(private router: Router, private servicesService:ServicesService, private authentication:AuthenticationService) { }
   idLocker = localStorage.getItem("selectedLockeId")
   lockerUpdate = {"bookings": "aaaaaaa"};
+  
 
 
   reservar(): void {
@@ -33,6 +37,11 @@ export class ReservaDetalleComponent {
   }
 
   ngOnInit(): void {
+    if(!this.authentication.isAuthenticated()){
+      swal('¡No puedes acceder si no estas identificado!');
+      this.router.navigate(['/registro'])
+    }
+  
 
     const arrivalDate = localStorage.getItem("dayPutForm");
     const departureDate =  localStorage.getItem("dayOutForm");

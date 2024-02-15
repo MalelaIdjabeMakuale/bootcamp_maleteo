@@ -1,9 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { AuthenticationService } from './services/authentication.service';
+import { Router } from '@angular/router';
+import swal from 'sweetalert';
 
 
 @Component({
@@ -13,7 +16,11 @@ import { NavbarComponent } from './components/navbar/navbar.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
- 
+export class AppComponent implements OnInit {
+  constructor(private authenticationService:AuthenticationService, private router:Router){}
+
+  ngOnInit(): void {
+
+  }
 }
 
