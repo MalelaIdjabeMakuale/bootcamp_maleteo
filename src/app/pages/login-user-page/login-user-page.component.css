@@ -17,12 +17,12 @@ form {
     border:none;
     border-radius: 5px;
   }
-  
+
   label {
     display: block;
     margin-bottom: 8px;
   }
-   
+
   input {
     font-family: "Noto Sans", sans-serif;
     width: 90%;
@@ -38,7 +38,7 @@ form {
     background-color: #fff1d4;
   }
 
-  
+
   .submitButton {
     font-family: "Noto Sans", sans-serif;
     background-color:#F68F23;
@@ -55,7 +55,7 @@ h2 {margin-left: 2vh;
 margin-top: 4vh;}
 
 .submitButton:hover {
-  background-color: #D17100; 
+  background-color: #D17100;
 }
   .alreadyMember {border: none;
     background: none;
@@ -75,6 +75,7 @@ margin-top: 4vh;}
 }
 .registrate {
   margin-left: 2vh;
+  height: 100vh;
 }
 
 .pulsa {margin-left: 2vh;}
