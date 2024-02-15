@@ -1,13 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ServicesService } from '../../services/services.service';
-<<<<<<< HEAD
 import { AuthenticationService } from '../../services/authentication.service';
 import swal from 'sweetalert';
 
-=======
-import swal from 'sweetalert';
->>>>>>> origin/deleteLocal
+
 @Component({
   selector: 'app-reserva-detalle',
   standalone: true,
