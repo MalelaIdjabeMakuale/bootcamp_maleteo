@@ -1,32 +1,42 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import Pusher from 'pusher-js';
 import { HttpClient } from "@angular/common/http";
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule,FormControl,FormGroup } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+
+
+
 @Component({
   selector: 'app-chat2',
-   standalone: true,
-  imports: [ReactiveFormsModule,CommonModule,FormsModule],
+  standalone: true,
+  imports: [ReactiveFormsModule, CommonModule, FormsModule,],
   templateUrl: './chat2.component.html',
   styleUrls: ['./chat2.component.css']
 })
 export class Chat2Component implements OnInit {
-  username = 'username';
-  message = '';
+  username: string = 'username';
+  message: string = '';
   messages: { username: string, message: string }[] = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private ngZone: NgZone) { }
+  
+  
+
+
 
   ngOnInit(): void {
+    console.log(this.message);
     Pusher.logToConsole = true;
-    
+
     const pusher = new Pusher('9e5227b9c4e79c8891ed', {
       cluster: 'eu'
     });
 
     const channel = pusher.subscribe('chat');
     channel.bind('message', (data: { username: string, message: string }) => {
-      this.messages.push(data);
+      this.ngZone.run(() => {
+        this.messages.push(data);
+      });
     });
   }
 
