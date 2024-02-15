@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ServicesService } from '../../services/services.service';
+<<<<<<< HEAD
 import { AuthenticationService } from '../../services/authentication.service';
 import swal from 'sweetalert';
 
+=======
+import swal from 'sweetalert';
+>>>>>>> origin/deleteLocal
 @Component({
   selector: 'app-reserva-detalle',
   standalone: true,
@@ -31,9 +35,8 @@ export class ReservaDetalleComponent implements OnInit{
       }
     );
 
-
-    alert('¡Reserva realizada!');
-    this.router.navigate(['/usuarios/:id']);
+swal ('¡Reserva realizada!');
+    this.router.navigate(['/otra-pagina']);//poner el componente de reserva realizada
   }
 
   ngOnInit(): void {

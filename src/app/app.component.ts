@@ -6,7 +6,6 @@ import { HttpClient } from '@angular/common/http';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AuthenticationService } from './services/authentication.service';
 import { Router } from '@angular/router';
-import swal from 'sweetalert';
 
 
 @Component({
