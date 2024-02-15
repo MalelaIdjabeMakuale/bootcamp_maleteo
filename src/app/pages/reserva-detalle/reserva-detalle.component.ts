@@ -10,8 +10,8 @@ import { ServicesService } from '../../services/services.service';
 })
 export class ReservaDetalleComponent {
   constructor(private router: Router, private servicesService:ServicesService) { }
-  idLocker = localStorage.getItem("selectedLocker")
-  lockerUpdate = {bookings: "soyReserva1"}
+  idLocker = localStorage.getItem("selectedLockeId")
+  lockerUpdate = {"bookings": "aaaaaaa"};
 
 
   reservar(): void {
