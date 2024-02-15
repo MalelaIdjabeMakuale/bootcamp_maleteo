@@ -33,6 +33,11 @@ export class ReservaDetalleComponent implements OnInit{
     );
 
 swal ('¡Reserva realizada!');
+localStorage.removeItem('dayOutForm');
+localStorage.removeItem('dayPutForm');
+localStorage.removeItem('selectedLockeId');
+localStorage.removeItem('numObjectsForm');
+localStorage.removeItem('addressForm');
     this.router.navigate(['/otra-pagina']);//poner el componente de reserva realizada
   }
 
