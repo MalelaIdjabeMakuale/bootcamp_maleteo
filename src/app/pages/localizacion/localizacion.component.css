@@ -45,3 +45,32 @@
    transform: translate(-50%, -50%); 
 
  }
+.selectedLocker{
+  padding-top: 2vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background: rgb(250, 171, 29);
+  background: linear-gradient(
+    90deg,
+    rgba(250, 171, 29, 1) 0%,
+    rgba(254, 204, 49, 1) 97%
+  );
+ }
+
+ button {
+  font-family: "Noto Sans", sans-serif;
+  background-color:#F68F23;
+  color: white;
+  width: 20vh;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  margin: 2vh 0;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #D17100; 
+}

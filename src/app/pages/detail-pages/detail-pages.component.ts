@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { user } from '../../interfaces/user_interface';
 import { ServicesService } from '../../services/services.service';
+import { SharedService } from '../../services/shared.service';
 @Component({
   selector: 'app-detail-pages',
   standalone: true,
@@ -12,7 +13,7 @@ import { ServicesService } from '../../services/services.service';
 export class DetailPagesComponent {
   id!:string | null;
   user!:user;
-  constructor(private servicio:ServicesService,private rutaActivada: ActivatedRoute) {}
+  constructor(private servicio:ServicesService,private rutaActivada: ActivatedRoute, private sharedService: SharedService) {}
 
   ngOnInit(): void {
 console.log
@@ -22,8 +23,11 @@ console.log
 
 getData(){
   this.servicio.getUserId(this.id).subscribe((data:any) => {
-    console.log(data)
+    console.log("esto es el data del user: ",data.data)
     this.user = data.data;
+    if(this.user.estaciones.bookings !==null || this.user.estaciones.bookings!==""){
+      this.sharedService.setShowBookings(true);
+    }
   },
   (error: any) => {
     console.error('Error fetching user data:', error);

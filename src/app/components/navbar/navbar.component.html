@@ -13,6 +13,11 @@
         <li routerLink="usuarios/:id">
           <img src="../../../assets/perfil.PNG">
         </li>
+        @if(showBookingsValue){
+          <li routerLink="confirmada/reserva">
+            <img src="../../../assets/bookings.PNG">
+          </li>
+        }
     </ul>
 </nav>
 

@@ -11,6 +11,7 @@ import { AdsDetailComponent } from './pages/ads/ads-detail/ads-detail.component'
 import { AdsFormComponent } from './pages/ads/ads-form/ads-form.component';
 import { AdsListComponent } from './pages/ads/ads-list/ads-list.component';
 import { ReservaDetalleComponent } from './pages/reserva-detalle/reserva-detalle.component';
+import { ReservaConfirmadaComponent } from './pages/reserva-confirmada/reserva-confirmada.component';
 
 
 export const routes: Routes = [{path:'', component: LandingPageComponent},
@@ -23,7 +24,8 @@ export const routes: Routes = [{path:'', component: LandingPageComponent},
 {path: 'anuncios', component: AdsListComponent},
 {path: 'anuncios/:id', component: AdsDetailComponent},
 {path: 'localizacion', component: LocalizacionComponent},
-{path: 'reserva', component: ReservaDetalleComponent}
+{path: 'reserva', component: ReservaDetalleComponent},
+{path: 'confirmada/reserva', component: ReservaConfirmadaComponent}
 
     
 ];

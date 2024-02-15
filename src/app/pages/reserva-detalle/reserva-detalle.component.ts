@@ -29,7 +29,7 @@ export class ReservaDetalleComponent {
 
 
     alert('¡Reserva realizada!');
-    this.router.navigate(['/otra-pagina']);//poner el componente de reserva realizada
+    this.router.navigate(['/usuarios/:id']);
   }
 
   ngOnInit(): void {
