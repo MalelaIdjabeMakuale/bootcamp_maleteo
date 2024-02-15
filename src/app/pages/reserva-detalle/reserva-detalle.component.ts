@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ServicesService } from '../../services/services.service';
+import swal from 'sweetalert';
 @Component({
   selector: 'app-reserva-detalle',
   standalone: true,
@@ -27,8 +28,7 @@ export class ReservaDetalleComponent {
       }
     );
 
-
-    alert('¡Reserva realizada!');
+swal ('¡Reserva realizada!');
     this.router.navigate(['/otra-pagina']);//poner el componente de reserva realizada
   }
 
