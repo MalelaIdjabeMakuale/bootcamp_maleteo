@@ -1,76 +1,90 @@
 @import url("https://fonts.googleapis.com/css2?family=Catamaran:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.cdnfonts.com/css/gilroy-bold");
 
- 
- 
- #map{
-    height: 500px;
- }
+#map {
+  height: 500px;
+}
 
-/* HTML: <div class="loader"></div> */
+/* .isloading {
+  height: 80vh;
+} */
+.loading-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+}
+
 .loader {
-   --d:22px;
-   width: 4px;
-   height: 4px;
-   border-radius: 50%;
-   color: #faab1d;
-   box-shadow: 
-     calc(1*var(--d))      calc(0*var(--d))     0 0,
-     calc(0.707*var(--d))  calc(0.707*var(--d)) 0 1px,
-     calc(0*var(--d))      calc(1*var(--d))     0 2px,
-     calc(-0.707*var(--d)) calc(0.707*var(--d)) 0 3px,
-     calc(-1*var(--d))     calc(0*var(--d))     0 4px,
-     calc(-0.707*var(--d)) calc(-0.707*var(--d))0 5px,
-     calc(0*var(--d))      calc(-1*var(--d))    0 6px;
-   animation: l27 1s infinite steps(8);
- }
- @keyframes l27 {
-   100% {transform: rotate(1turn)}
- }
- @keyframes l2 {to{transform: rotate(1turn)}}
+  --d: 22px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  color: #faab1d;
+  box-shadow: calc(1 * var(--d)) calc(0 * var(--d)) 0 0,
+    calc(0.707 * var(--d)) calc(0.707 * var(--d)) 0 1px,
+    calc(0 * var(--d)) calc(1 * var(--d)) 0 2px,
+    calc(-0.707 * var(--d)) calc(0.707 * var(--d)) 0 3px,
+    calc(-1 * var(--d)) calc(0 * var(--d)) 0 4px,
+    calc(-0.707 * var(--d)) calc(-0.707 * var(--d)) 0 5px,
+    calc(0 * var(--d)) calc(-1 * var(--d)) 0 6px;
+  animation: l27 1s infinite steps(8);
+}
+@keyframes l27 {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+@keyframes l2 {
+  to {
+    transform: rotate(1turn);
+  }
+}
 
- .loading-container {position: absolute; 
-   top: 50%; 
-   left: 50%; 
-   transform: translate(-50%, -50%); /
-
- }
-
- h1 {
-   font-family: 'Catamaran', sans-serif;
-   font-size: 40px;
-   position: absolute; 
-   top: 50%; 
-   left: 50%; 
-   transform: translate(-50%, -50%); 
-
- }
-.selectedLocker{
-  padding-top: 2vh;
+.selectedLockerDiv {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  width: 100%;
-  background: rgb(250, 171, 29);
-  background: linear-gradient(
-    90deg,
-    rgba(250, 171, 29, 1) 0%,
-    rgba(254, 204, 49, 1) 97%
-  );
- }
+  justify-content: flex-start;
+  margin-top: 20px;
+}
 
- button {
+.selectedLockerText {
+  font-family: "Catamaran", sans-serif;
+  font-size: 30px;
+}
+.separacion {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  width: 80%;
+  margin: 5vh;
+}
+
+.separacionImg {
+  border: none;
+  width: 80%;
+  margin: 5vh;
+}
+
+img {
+  height: 40%;
+  width: 90%;
+}
+
+.divBtn {
+  display: flex;
+  justify-content: center;
+}
+
+.reservaBtn {
   font-family: "Noto Sans", sans-serif;
-  background-color:#F68F23;
+  background-color: #f68f23;
   color: white;
-  width: 20vh;
-  padding: 5px;
+  width: 100%;
+  padding: 10px;
   border: none;
   border-radius: 5px;
-  margin: 2vh 0;
+  margin: 20px 20px;
   cursor: pointer;
-}
-button:hover {
-  background-color: #D17100; 
 }

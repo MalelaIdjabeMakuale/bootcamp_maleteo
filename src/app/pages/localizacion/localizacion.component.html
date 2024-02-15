@@ -1,34 +1,47 @@
-
-
-
 <div id="map"></div>
 
+<div class="isloading">
+  @if (isLoading) {
+  <div>
+    <div class="loading-container">
+      <div class="loader"></div>
+    </div>
+  </div>
 
+  } @if (!isLoading) {
+  <div class="selectedLockerDiv">
+    <h1 class="selectedLockerText">Locker seleccionado</h1>
+    <div class="separacion">
+      <h3 class="locker_title"><b>Nombre: </b>{{ selectedLockerName }}</h3>
+    </div>
+    <div class="separacion">
+      <h3 class="locker_title">
+        <b>Capacidad de la propiedad: </b>{{ selectedLockerCapacity }}
+      </h3>
+    </div>
+    <div class="separacion">
+      <h3 class="locker_title">
+        <b>Tipo de propiedad: </b>{{ selectedLockerPropertySpace }}
+      </h3>
+    </div>
+    <div class="separacion">
+      <h3 class="locker_title">
+        <b>Tipo de espacio: </b>{{ selectedPropertyTipe }}
+      </h3>
+    </div>
+    <div class="separacion">
+      <h3 class="locker_title">
+        <b>Disponibilidad: </b>{{ selectedLockerAvi }}
+      </h3>
+    </div>
+    <div class="separacionImg">
+      <h3><b>Fotos del espacio: </b></h3>
+      <img src="{{ selectedLockerImg }}" alt="{{ selectedLockerName }}" />
+    </div>
 
-<div>
-
-    @if (isLoading) {  <div>
-        <div class="loading-container">
-          <div class="loader"></div>
-        </div>
-        <h1>Cargando mapa...</h1>
-      </div>
-    
-    }
-   
-@if (!isLoading) {  <div class="selectedLocker">
-    <h1>Locker seleccionado</h1>
-<h3>Nombre:{{selectedLockerName}} </h3>
-<h3>Capacidad de la propiedad: {{selectedLockerCapacity}}</h3>
-<h3>Tipo de propiedad: {{selectedLockerPropertySpace}}</h3>
-<h3>Tipo de espacio: {{selectedPropertyTipe}}</h3>
-<h3>Disponibilidad: {{selectedLockerAvi}}</h3>
-<img src="{{selectedLockerImg}}" alt="{{selectedLockerName}}">
-<button routerLink="/reserva">Aceptar locker</button>
-
-</div>  
-}
-  
- 
-  
-  
+    <div class="divBtn">
+      <button class="reservaBtn" routerLink="/reserva">Reservar</button>
+    </div>
+  </div>
+  }
+</div>
