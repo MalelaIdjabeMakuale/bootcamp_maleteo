@@ -93,14 +93,13 @@
     }
   },
   "cli": {
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     "analytics": false
-=======
-    "analytics": "de8bfebb-04e0-4eda-8439-8fa21ba998e0"
->>>>>>> home_onboarding
-=======
+
+    "analytics": "de8bfebb-04e0-4eda-8439-8fa21ba998e0",
+
+
     "analytics": false
->>>>>>> login
+
   }
 }
