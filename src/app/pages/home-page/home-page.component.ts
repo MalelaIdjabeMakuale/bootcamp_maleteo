@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Continent } from '../../interfaces/inferfaces_home';
 import { Location } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
   selector: 'app-home-page',
@@ -10,7 +11,7 @@ import { Component } from '@angular/core';
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css'
 })
-export class HomePageComponent {
+export class HomePageComponent implements OnInit {
   continents: Continent[] = [
     { name: 'África' },
     { name: 'América' },
@@ -22,6 +23,8 @@ export class HomePageComponent {
 
   constructor(private location: Location) {}
 
+  ngOnInit(): void {
+  }
   goBack(): void {
     this.location.back();
   }

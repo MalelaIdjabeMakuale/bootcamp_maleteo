@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ServicesService } from '../../services/services.service';
 import { user } from '../../interfaces/user_interface';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
 import { Map, marker, tileLayer } from 'leaflet';
+import { AuthenticationService } from '../../services/authentication.service';
+import swal from 'sweetalert';
+
 
 @Component({
   selector: 'app-localizacion',
@@ -25,13 +28,18 @@ export class LocalizacionComponent implements OnInit {
   isLoading = true;
 
 
-  constructor(private servicio: ServicesService) {}
+  constructor(private router:Router, private servicio: ServicesService, private authentication:AuthenticationService) {}
 
   ngOnInit(): void {
     this.servicio.getAllUsers().subscribe((data: any) => {
       this.allusers = data;
       console.log('soy all', this.allusers);
       this.getLocation();
+
+      if(!this.authentication.isAuthenticated()){
+        swal('¡No puedes acceder si no estas identificado!');
+        this.router.navigate(['/registro'])
+      }
 
     });
   }

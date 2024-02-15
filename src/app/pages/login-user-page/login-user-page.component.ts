@@ -3,6 +3,7 @@ import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ServicesService } from '../../services/services.service';
 import { user } from '../../interfaces/user_interface';
+import { AuthenticationService } from '../../services/authentication.service';
 @Component({
   selector: 'app-login-user-page',
   standalone: true,
@@ -11,15 +12,18 @@ import { user } from '../../interfaces/user_interface';
   styleUrls: ['./login-user-page.component.css'],
 })
 export class LoginUserPageComponent implements OnInit {
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   showLoginForm: boolean = true;
   showRegisterForm: boolean = false;
 
   constructor(
     private router: Router,
-    private servicesService: ServicesService
+    private servicesService: ServicesService,
   ) {}
+
+  
 
   registerForm: FormGroup = new FormGroup({
     email: new FormControl(''),

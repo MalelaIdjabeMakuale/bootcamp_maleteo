@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { user } from '../../interfaces/user_interface';
 import { ServicesService } from '../../services/services.service';
 import { SharedService } from '../../services/shared.service';
+import { AuthenticationService } from '../../services/authentication.service';
+import swal from 'sweetalert';
+
 @Component({
   selector: 'app-detail-pages',
   standalone: true,
@@ -13,12 +16,18 @@ import { SharedService } from '../../services/shared.service';
 export class DetailPagesComponent {
   id!:string | null;
   user!:user;
-  constructor(private servicio:ServicesService,private rutaActivada: ActivatedRoute, private sharedService: SharedService) {}
+  constructor(private router:Router, private authentication:AuthenticationService, private servicio:ServicesService,private rutaActivada: ActivatedRoute, private sharedService: SharedService) {}
 
   ngOnInit(): void {
 console.log
     this.id = localStorage.getItem('id_user');
     this.getData();
+
+      if(!this.authentication.isAuthenticated()){
+        swal('¡No puedes acceder si no estas identificado!');
+        this.router.navigate(['/registro'])
+      }
+    
 }
 
 getData(){
