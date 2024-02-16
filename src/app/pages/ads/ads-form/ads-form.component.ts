@@ -64,8 +64,8 @@ export class AdsFormComponent implements OnInit{
 
           const userId = localStorage.getItem('id_user'); //aqui tengo que meter la logica para sacar el id del user
           const locker = response.estacion._id;
-          const lockerUpdate = {estaciones:locker._id}
-          console.log("soy de el antes update id locker ",locker._id)
+          const lockerUpdate = {estaciones:locker}
+          console.log("soy de el antes update id locker!!! ",locker)
           this.servicesService.updateUser(userId,lockerUpdate).subscribe(
             (response) => {
               console.log("soy la response",response)
