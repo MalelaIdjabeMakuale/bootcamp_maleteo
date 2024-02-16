@@ -1,5 +1,5 @@
 @if(showLoginForm){
-<div>
+<div class="iniciarSesion">
   <h2 class="iniciar">Iniciar Sesión</h2>
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <label for="userName">Username:</label>
@@ -16,7 +16,7 @@
 
 }
 @if(!showLoginForm){
-<div>
+<div class="registrarse">
   <h2>Registrarse</h2>
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <label for="email">Direccion de correo electronico:</label>

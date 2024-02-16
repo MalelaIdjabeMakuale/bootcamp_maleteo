@@ -1,1 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
+.reservaConfirmada {display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    padding: 10px;
+    margin: 20px;
+    border-radius: 5px;
+/* border: 2px solid #FF8200 ; */
+
+}
+
+h1 {
+    font-family: 'Catamaran', sans-serif;
+    font-size: 30px;
+    padding: 30px;
+}
+
+h2 {
+    font-family: 'Noto Sans', sans-serif;
+    padding: 15px;
+}
+
+p {
+    font-family: 'Noto Sans', sans-serif;
+}

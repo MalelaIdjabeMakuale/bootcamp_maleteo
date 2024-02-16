@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ServicesService } from '../../services/services.service';
 import { AuthenticationService } from '../../services/authentication.service';
 import swal from 'sweetalert';
@@ -8,7 +8,7 @@ import swal from 'sweetalert';
 @Component({
   selector: 'app-reserva-detalle',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './reserva-detalle.component.html',
   styleUrl: './reserva-detalle.component.css'
 })
@@ -33,7 +33,12 @@ export class ReservaDetalleComponent implements OnInit{
     );
 
 swal ('¡Reserva realizada!');
-    this.router.navigate(['/otra-pagina']);//poner el componente de reserva realizada
+localStorage.removeItem('dayOutForm');
+localStorage.removeItem('dayPutForm');
+localStorage.removeItem('selectedLockeId');
+localStorage.removeItem('numObjectsForm');
+localStorage.removeItem('addressForm');
+    this.router.navigate(['/confirmada/reserva']);
   }
 
   ngOnInit(): void {

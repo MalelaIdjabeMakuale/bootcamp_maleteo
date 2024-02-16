@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ServicesService } from '../../services/services.service';
 import { user } from '../../interfaces/user_interface';
 import { RouterLink, Router } from '@angular/router';
-import { Map, marker, tileLayer } from 'leaflet';
+import { Map, marker, tileLayer, icon } from 'leaflet';
 import { AuthenticationService } from '../../services/authentication.service';
 import swal from 'sweetalert';
 
@@ -69,12 +69,20 @@ export class LocalizacionComponent implements OnInit {
     this.isLoading = false;
 
     
+    const myLocationIcon = icon({
+      iconUrl: '../../../assets/icons8-location-pin-32.png', 
+      iconSize: [32, 32], 
+      iconAnchor: [16, 32], 
+    });
+
     const markerGeoloc = marker([
       this.lat,
       this.lon,
-    ])
+    ], {
+      icon: myLocationIcon 
+    })
       .addTo(map)
-      .bindPopup(`soylocker geoloc`)
+      .bindPopup(`Tu ubicación`)
       .openPopup();
 
     this.allusers.forEach((element) => {
