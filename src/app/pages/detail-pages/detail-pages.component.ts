@@ -42,10 +42,9 @@ getData(){
   this.servicio.getUserId(this.id).subscribe((data:any) => {
     console.log("esto es el data del user: ",data.data)
     this.user = data.data;
-    console.log("log de prueba", this.user.estaciones[0].bookings.length);
-    
-    if (this.user.estaciones[0].bookings.length > 0) {
-    
+
+    console.log ("estas son las estaciones" ,this.user.estaciones);
+    if(this.user.estaciones.bookings !==null || this.user.estaciones.bookings!==""){
       this.sharedService.setShowBookings(true);
     }
   },

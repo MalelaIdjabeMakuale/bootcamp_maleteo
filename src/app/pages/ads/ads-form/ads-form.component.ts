@@ -18,7 +18,7 @@ import { AuthenticationService } from '../../../services/authentication.service'
   templateUrl: './ads-form.component.html',
   styleUrls: ['./ads-form.component.css'],
 })
-export class AdsFormComponent implements OnInit{
+export class AdsFormComponent implements OnInit {
   propertyType = ['Casa', 'Hotel', 'Establecimiento'];
   propertySpace = ['Habitación', 'Hall', 'Trastero', 'Buhardilla', 'Garaje'];
 
@@ -41,9 +41,9 @@ export class AdsFormComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
-    if(!this.authentication.isAuthenticated()){
+    if (!this.authentication.isAuthenticated()) {
       swal('¡No puedes acceder si no estas identificado!');
-      this.router.navigate(['/registro'])
+      this.router.navigate(['/registro']);
     }
   }
 
@@ -59,14 +59,13 @@ export class AdsFormComponent implements OnInit{
           console.log(response);
 
           const userId = localStorage.getItem('id_user'); //aqui tengo que meter la logica para sacar el id del user
-          const locker = response;
-          console.log("soy locker",locker.estacion._id);
-          const lockerUpdate = {estaciones:locker.estacion._id}
+          const locker = response.estacion_id;
+          const lockerUpdate = {estaciones:locker._id}
           console.log("soy de el antes update id locker ",locker._id)
           this.servicesService.updateUser(userId,lockerUpdate).subscribe(
             (response) => {
-              console.log("soy la response",response)
-              console.log("soy de el update",userId)
+              console.log('soy la response', response);
+              console.log('soy de el update', userId);
 
               console.log('Usuario actualizado con la estacion');
             },

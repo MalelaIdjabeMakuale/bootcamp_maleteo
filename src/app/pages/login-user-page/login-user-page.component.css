@@ -3,17 +3,16 @@
 
 h2 {font-family: "Catamaran", sans-serif;
   font-weight: bold;
-  padding-left: 4vh;
+ 
 }
 
 p{font-family: "Noto Sans", sans-serif;
 font-size: 10px;
-padding-left: 4vh;}
+}
 
 form {
-    max-width: 300px;
-    margin: auto;
-    padding: 20px;
+
+    padding: 40px;
     border:none;
     border-radius: 5px;
   }
@@ -74,12 +73,15 @@ margin-top: 4vh;}
   font-family: "Noto Sans", sans-serif;
 }
 .registrate {
-  margin-left: 2vh;
+  padding: 20px;
 }
 
-.pulsa {margin-left: 2vh;}
+.pulsa {padding:20px;}
 
 body{
   height: 94vh;
   width: 100%;
 }
+
+.iniciarSesion {height: 90vh;
+padding: 20px;}
