@@ -42,8 +42,22 @@ getData(){
 aceptarReserva(reserva:any){
           const chatUpdate = {chats:reserva}
 
-          console.log("soy el numero de reserva??",reserva);
-          
+            const clientId =   reserva.split("/",1);
+
+
+          console.log("soy el numero de clientId??", clientId[0]);       
+          this.servicio.updateUser(clientId[0],chatUpdate).subscribe(
+            (response) => {
+              console.log('soy la response', response);
+              console.log('soy de el update', this.id);
+              console.log('Usuario actualizado con la estacion');
+            },
+            (error) => {
+              console.error('Error al actualizar el usuario', error);
+            }
+          );
+
+
 
 
           this.servicio.updateUser(this.id,chatUpdate).subscribe(

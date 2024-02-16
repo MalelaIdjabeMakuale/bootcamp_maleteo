@@ -49,7 +49,7 @@ export class Chat2Component implements OnInit {
   }
 
   submit(): void {
-    this.http.post(`http://localhost:3000/api/messages`, {
+    this.http.post(`https://api-plum-six.vercel.app/api/messages`, {
       username: this.username,
       message: this.message,
       chat: this.chat
