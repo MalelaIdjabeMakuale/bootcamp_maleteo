@@ -1,16 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ServicesService } from '../../../services/services.service';
 import swal from 'sweetalert';
 import { AuthenticationService } from '../../../services/authentication.service';
 import { HttpClient } from "@angular/common/http";
+import { Map, marker, tileLayer, icon, LeafletMouseEvent } from 'leaflet';
 
 @Component({
   selector: 'app-ads-form',
@@ -19,10 +14,14 @@ import { HttpClient } from "@angular/common/http";
   templateUrl: './ads-form.component.html',
   styleUrls: ['./ads-form.component.css'],
 })
-export class AdsFormComponent implements OnInit{
+export class AdsFormComponent implements OnInit {
   propertyType = ['Casa', 'Hotel', 'Establecimiento'];
   propertySpace = ['Habitación', 'Hall', 'Trastero', 'Buhardilla', 'Garaje'];
   selectedFile: File | null = null;
+  longitude: any;
+  latitude: any;
+  isLoading = true;
+  marker: any;
 
   anuncioForm: FormGroup = this.formbuilder.group({
     name: new FormControl(''),
@@ -31,9 +30,8 @@ export class AdsFormComponent implements OnInit{
     capacity: new FormControl(''),
     img: new FormControl(''),
     aviable: new FormControl(true),
-    longitude: new FormControl(''),
     latitude: new FormControl(''),
-
+    longitude: new FormControl('')
   });
 
   constructor(
@@ -45,32 +43,65 @@ export class AdsFormComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
-    if(!this.authentication.isAuthenticated()){
+    if (!this.authentication.isAuthenticated()) {
       swal('¡No puedes acceder si no estas identificado!');
-      this.router.navigate(['/registro'])
+      this.router.navigate(['/registro']);
     }
+    this.createMap();
+  }
+
+  createMap(): void {
+    this.isLoading = true;
+    const map = new Map('map').setView([41.3851, 2.1734], 13);
+    tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    }).addTo(map);
+    this.isLoading = false;
+
+    map.on('click', (e: LeafletMouseEvent) => {
+      this.latitude = e.latlng.lat;
+      this.longitude = e.latlng.lng;
+
+      if (this.marker) {
+        map.removeLayer(this.marker);
+      }
+      this.marker = marker([this.latitude, this.longitude], {
+        icon: icon({
+          iconSize: [25, 41],
+          iconAnchor: [13, 41],
+          iconUrl: 'leaflet/marker-icon.png',
+          shadowUrl: 'leaflet/marker-shadow.png'
+        })
+      }).addTo(map);
+      const latitudeControl = this.anuncioForm.get('latitude');
+const longitudeControl = this.anuncioForm.get('longitude');
+
+if (latitudeControl && longitudeControl) {
+  latitudeControl.setValue(this.latitude);
+  longitudeControl.setValue(this.longitude);
+}
+
+    });
   }
 
   async onSubmit() {
-    if (this.anuncioForm && this.anuncioForm.valid) {
+    if (this.anuncioForm.valid) {
       const formValue = this.anuncioForm.value;
-      console.log(formValue);
+
+      this.isLoading = true; // Iniciar la carga
 
       this.servicesService.registerLocker(formValue).subscribe(
         (response) => {
           console.log('Register successful', response.estacion._id);
 
-          console.log(response);
-
-          const userId = localStorage.getItem('id_user'); //aqui tengo que meter la logica para sacar el id del user
+          const userId = localStorage.getItem('id_user');
           const locker = response.estacion._id;
-          const lockerUpdate = {estaciones:locker}
-          console.log("soy de el antes update id locker!!! ",locker)
-          this.servicesService.updateUser(userId,lockerUpdate).subscribe(
-            (response) => {
-              console.log("soy la response",response)
-              console.log("soy de el update",userId)
+          const lockerUpdate = { estaciones: locker };
 
+          this.servicesService.updateUser(userId, lockerUpdate).subscribe(
+            () => {
               console.log('Usuario actualizado con la estacion');
             },
             (error) => {
@@ -82,11 +113,13 @@ export class AdsFormComponent implements OnInit{
         },
         (error) => {
           console.error('Error en el registro:', error);
-          this.anuncioForm.enable();
         }
-      );
+      ).add(() => {
+        this.isLoading = false; // Finalizar la carga
+      });
     }
   }
+
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
   }
@@ -100,14 +133,13 @@ export class AdsFormComponent implements OnInit{
     formData.append('file', this.selectedFile);
 
     this.http.post<any>('http://api-plum-six.vercel.app/api/upload', formData).subscribe(
-      (response:any) => {
+      (response: any) => {
         console.log('Imagen subida con éxito:', response.imageUrl);
-        // Actualizar el formulario con la URL de la imagen
         this.anuncioForm.patchValue({
           img: response.imageUrl
         });
       },
-      (error:any) => {
+      (error: any) => {
         console.error('Error al subir la imagen:', error);
       }
     );

@@ -70,7 +70,7 @@ aceptarReserva(reserva:any){
               console.error('Error al actualizar el usuario', error);
             }
           );
-          // this.router.navigate(["chatlist"]);
+          this.router.navigate(["chatlist"]);
   
 }
 eliminarReserva(){
