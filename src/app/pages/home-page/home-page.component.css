@@ -20,7 +20,7 @@ font:bolder;
 outline: none;
 font-size: 40px;}
 
-.tarifas {
+.tarifasAfi, .tarifasAsi, .tarifasAme, .tarifasAnt, .tarifasEur, .tarifasOce  {
     padding: 20px;
     height: 85vh;
     display: flex;
