@@ -48,6 +48,8 @@ export class LoginUserPageComponent implements OnInit {
         console.log('Login successful', response.data.token);
         localStorage.setItem('token',response.data.token );
         localStorage.setItem('id_user',response.data.user._id );
+        localStorage.setItem('user_name',response.data.user.name );
+
 
         console.log(this.loginForm.value);
         this.router.navigate(['/ubicacion']);

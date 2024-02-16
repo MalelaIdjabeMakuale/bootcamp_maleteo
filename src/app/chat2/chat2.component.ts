@@ -17,8 +17,9 @@ import swal from 'sweetalert';
   styleUrls: ['./chat2.component.css']
 })
 export class Chat2Component implements OnInit {
-  username: string = 'username';
+  username: string = `${localStorage.getItem("user_name")}`;
   message: string = '';
+  chat:string = "sala1";
   messages: { username: string, message: string }[] = [];
 
   constructor(private http: HttpClient, private ngZone: NgZone, private authentication:AuthenticationService, private router:Router) { }
@@ -32,15 +33,15 @@ export class Chat2Component implements OnInit {
       swal('¡No puedes acceder si no estas identificado!');
       this.router.navigate(['/registro'])
     }
-    console.log(this.message);
+    console.log(this.messages);
     Pusher.logToConsole = true;
 
     const pusher = new Pusher('9e5227b9c4e79c8891ed', {
       cluster: 'eu'
     });
 
-    const channel = pusher.subscribe('chat');
-    channel.bind('message', (data: { username: string, message: string }) => {
+    const channel = pusher.subscribe(this.chat);
+    channel.bind('message', (data: { username: string, message: string}) => {
       this.ngZone.run(() => {
         this.messages.push(data);
       });
@@ -48,9 +49,10 @@ export class Chat2Component implements OnInit {
   }
 
   submit(): void {
-    this.http.post('https://api-plum-six.vercel.app/api/messages', {
+    this.http.post(`http://localhost:3000/api/messages`, {
       username: this.username,
-      message: this.message
+      message: this.message,
+      chat: this.chat
     }).subscribe(
       () => this.message = '',
       (error: any) => console.error('Error submitting message:', error)

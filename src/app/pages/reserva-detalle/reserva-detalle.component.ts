@@ -15,10 +15,9 @@ import swal from 'sweetalert';
 export class ReservaDetalleComponent implements OnInit{
   constructor(private router: Router, private servicesService:ServicesService, private authentication:AuthenticationService) { }
   idLocker = localStorage.getItem("selectedLockeId")
-  lockerUpdate = {"bookings": "aaaaaaa"};
+  idUser = localStorage.getItem("id_user")
+  lockerUpdate = {"bookings": `${this.idLocker}${this.idUser}`};
   
-
-
   reservar(): void {
     this.servicesService.updateLocker(this.idLocker,this.lockerUpdate).subscribe(
       (response) => {
