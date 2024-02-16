@@ -4,5 +4,13 @@
 
   <h2><b>BE FREE!</b></h2>
   <p>Contacta ya con tu guardian y espera a que acepte tu reserva</p>
-
+  <ul>
+    @for(reserva of reservas; track $index){
+      <li>
+       <p>Reserva: {{reserva}}</p>
+       <button (click)="aceptarReserva(reserva)">Aceptar</button>
+       <button (click)="eliminarReserva()">Eliminar</button>
+      </li>
+    }
+  </ul>
 </div>
