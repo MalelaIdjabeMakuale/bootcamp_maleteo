@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { ServicesService } from '../../../services/services.service';
 import swal from 'sweetalert';
 import { AuthenticationService } from '../../../services/authentication.service';
+import { HttpClient } from "@angular/common/http";
 
 @Component({
   selector: 'app-ads-form',
@@ -21,6 +22,7 @@ import { AuthenticationService } from '../../../services/authentication.service'
 export class AdsFormComponent implements OnInit{
   propertyType = ['Casa', 'Hotel', 'Establecimiento'];
   propertySpace = ['Habitación', 'Hall', 'Trastero', 'Buhardilla', 'Garaje'];
+  selectedFile: File | null = null;
 
   anuncioForm: FormGroup = this.formbuilder.group({
     name: new FormControl(''),
@@ -31,13 +33,15 @@ export class AdsFormComponent implements OnInit{
     aviable: new FormControl(true),
     longitude: new FormControl(''),
     latitude: new FormControl(''),
+
   });
 
   constructor(
     private formbuilder: FormBuilder,
     private router: Router,
     private servicesService: ServicesService,
-    private authentication: AuthenticationService
+    private authentication: AuthenticationService,
+    private http: HttpClient
   ) {}
 
   ngOnInit(): void {
@@ -83,6 +87,34 @@ export class AdsFormComponent implements OnInit{
       );
     }
   }
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0];
+  }
+
+  uploadFile() {
+    if (!this.selectedFile) {
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('file', this.selectedFile);
+
+    this.http.post<any>('http://api-plum-six.vercel.app/api/upload', formData).subscribe(
+      (response:any) => {
+        console.log('Imagen subida con éxito:', response.imageUrl);
+        // Actualizar el formulario con la URL de la imagen
+        this.anuncioForm.patchValue({
+          img: response.imageUrl
+        });
+      },
+      (error:any) => {
+        console.error('Error al subir la imagen:', error);
+      }
+    );
+  }
+//   cargarImagen() {
+//     this.router.navigate(['upload'])
+// }
 }
 
 //   const direccion = this.anuncioForm.get('location')?.value;
@@ -130,4 +162,5 @@ export class AdsFormComponent implements OnInit{
 //     }
 //   } catch (error) {
 //     console.error('Error al obtener datos de Nominatim', error);
-//   }
+
+

@@ -21,16 +21,16 @@ form {
     border:none;
     border-radius: 5px;
   }
-  
+
   label {
     display: block;
     margin-bottom: 8px;
   }
-   
+
   input {
     font-family: "Noto Sans", sans-serif;
     width: 90%;
- 
+
     border: none;
     border-bottom: 1px solid #ccc;
     margin-bottom: 12px;
@@ -57,6 +57,17 @@ button {
     cursor: pointer;
   }
 
+  a{
+    font-family: "Noto Sans", sans-serif;
+    background-color:#F68F23;
+    color: white;
+    width: 10vh;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 4vh;
+    cursor: pointer;
+  }
 
 
 .cyberpunk-checkbox {
@@ -71,7 +82,7 @@ button {
     cursor: pointer;
     margin-top: 4px;
   }
-  
+
   .cyberpunk-checkbox:before {
     content: "";
     background-color:#F68F23;
@@ -85,11 +96,11 @@ button {
     border-radius: 3px;
     transition: all 0.3s ease-in-out;
   }
-  
+
   .cyberpunk-checkbox:checked:before {
     transform: translate(-50%, -50%) scale(1);
   }
-  
+
   .cyberpunk-checkbox-label {
     font-size: 18px;
     color: #000000;
@@ -124,7 +135,7 @@ button {
     margin-right: 5px;
 }
 .custom-select select {
-  
+
 	position: relative;
     display: block;
     width: 90%;
@@ -138,8 +149,6 @@ button {
     border-radius: 0.25rem;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
-
-
 
 .custom-select select:focus {
     border-color: #80bdff;

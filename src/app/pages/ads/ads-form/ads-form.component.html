@@ -31,8 +31,8 @@
         <input type="number" id="longitude" formControlName="longitude">
     </div>
     <div>
-        <label for="img">Imagen de tu propiedad:</label>
-        <input type="text" id="img" formControlName="img">
+      <label for="img">Imagen de tu propiedad:</label>
+        <input type="file" id="img" (change)="onFileSelected($event)">
     </div>
     <div>
         <label for="capacity">Capacidad de tu propiedad:</label>
