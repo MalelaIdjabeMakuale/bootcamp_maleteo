@@ -99,6 +99,8 @@ font-size: 40px;}
 }
 
 select { margin: 20px 20px;
+    opacity: 0.7;
 }
 
 option { background-color: black;}
+
