@@ -16,11 +16,11 @@ import { FormsModule } from '@angular/forms';
 })
 export class HomePageComponent implements OnInit {
   continents: Continent[] = [
-    { name: 'África', price: '3000CFA', price2:'2000CFA' },
-    { name: 'América', price: '11USD', price2:'7USD' },
-    { name: 'Asia', price: '900JPY', price2:'700JPY' },
+    { name: 'África', price: '3000 CFA', price2:'2000 CFA' },
+    { name: 'América', price: '11 USD', price2:'7 USD' },
+    { name: 'Asia', price: '900 JPY', price2:'700 JPY' },
     { name: 'Europa', price: '6€', price2:'4€' },
-    { name: 'Oceanía', price: '10AUD', price2:'8AUD' },
+    { name: 'Oceanía', price: '10 AUD', price2:'8 AUD' },
     { name: 'Antártida', price: 'Gratis', price2:'Gratis' }
   ];
   selectedContinent: string = '';

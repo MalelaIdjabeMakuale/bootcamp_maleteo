@@ -2,9 +2,9 @@
 <div class="container">
   <button routerLink="/">Atrás</button>
 
-
+<h2 class="selecciona">Selecciona tu continente:</h2>
 <select [(ngModel)]="selectedContinent">
-    @for (continent of continents; track $index) {<option>{{continent.name}}</option>
+    @for (continent of continents; track $index) {<option> {{continent.name}}</option>
     }
     
   </select>
@@ -13,6 +13,7 @@
   @if (selectedContinent) {
 
   <div class="tarifas">
+    <div class="tarifasText"> </div>
     <h1 class="nuestrasTarifas"><b>Nuestras tarifas fijas para {{ selectedContinent }}</b></h1>
   
 
