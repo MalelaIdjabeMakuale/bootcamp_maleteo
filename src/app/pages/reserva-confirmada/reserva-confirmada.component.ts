@@ -42,7 +42,7 @@ getData(){
 aceptarReserva(reserva:any){
           const chatUpdate = {chats:reserva}
 
-            const clientId =   reserva.split("/",1);
+            const clientId =   reserva.split("_",1);
 
 
           console.log("soy el numero de clientId??", clientId[0]);       

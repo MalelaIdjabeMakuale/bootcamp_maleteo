@@ -16,7 +16,7 @@ export class ReservaDetalleComponent implements OnInit{
   constructor(private router: Router, private servicesService:ServicesService, private authentication:AuthenticationService) { }
   idLocker = localStorage.getItem("selectedLockeId")
   idUser = localStorage.getItem("id_user")
-  lockerUpdate = {"bookings": `${this.idUser}/${this.idLocker}`};
+  lockerUpdate = {"bookings": `${this.idUser}_${this.idLocker}`};
   
   reservar(): void {
     this.servicesService.updateLocker(this.idLocker,this.lockerUpdate).subscribe(
