@@ -53,4 +53,12 @@ getData(){
     }
 );
 }
+aceptarReserva():void{
+  console.log("reservar funciona");
+  
+}
+eliminarReserva():void{
+  console.log("eliminar funciona");
+  
+}
 }

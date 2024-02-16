@@ -13,6 +13,7 @@ import { AdsListComponent } from './pages/ads/ads-list/ads-list.component';
 import { ReservaDetalleComponent } from './pages/reserva-detalle/reserva-detalle.component';
 import { ReservaConfirmadaComponent } from './pages/reserva-confirmada/reserva-confirmada.component';
 import { Chat2Component } from './chat2/chat2.component';
+import { ChatlistComponent } from './chatlist/chatlist.component';
 
 export const routes: Routes = [{path:'', component: LandingPageComponent},
 {path:'home', component: HomePageComponent},
@@ -26,7 +27,9 @@ export const routes: Routes = [{path:'', component: LandingPageComponent},
 {path: 'localizacion', component: LocalizacionComponent},
 {path: 'reserva', component: ReservaDetalleComponent},
 {path: 'confirmada/reserva', component: ReservaConfirmadaComponent},
-{path: 'chat', component:Chat2Component}
+{path: 'chat', component:Chat2Component},
+{path: 'chatlist', component:ChatlistComponent}
+
 
 
     
