@@ -1,122 +1,37 @@
 
-
-
 <div class="container">
   <button routerLink="/">Atrás</button>
 
-   <div class="tarifas">
-    <h1 class="nuestrasTarifas"><b>Nuestras tarifas fijas </b></h1>
-    <div class="tarifa1">
-      <h4>24 horas</h4>
-      <h2>6 €</h2>
-      <h4>Por equipaje</h4>
-    </div>
 
-    <div class="tarifa2">
-      <h4>Día adicional</h4>
-      <h2>4 €</h2>
-      <h4>Por equipaje</h4>
-    </div>
-    </div>
-
-   <select>
-   @for (continent of continents; track $index) {<option>{{continent.name}}</option>
+<select [(ngModel)]="selectedContinent">
+    @for (continent of continents; track $index) {<option>{{continent.name}}</option>
+    }
+    
+  </select>
   
-  } 
-   </select>
 
+  @if (selectedContinent) {
+
+  <div class="tarifas">
+    <h1 class="nuestrasTarifas"><b>Nuestras tarifas fijas para {{ selectedContinent }}</b></h1>
+  
+
+      <div class="tarifa1">
+        <h4>24 horas</h4>
+        <h2>{{ getContinentPrice(selectedContinent) }}</h2>
+        <h4>Por equipaje</h4>
+      </div>
+
+      <div class="tarifa2">
+        <h4>Día adicional</h4>
+        <h2>{{ getContinentPrice2(selectedContinent) }}</h2>
+        <h4>Por equipaje</h4>
+      </div>
+    
+  </div>
+  
+  }
+ 
 </div>
 
-
-
-ÁFRICA
-<div class="tarifasAfi">
-  <h1 class="nuestrasTarifas"><b>Nuestras tarifas fijas </b></h1>
-  <div class="tarifa1">
-    <h4>24 horas</h4>
-    <h2>3000 CFA</h2>
-    <h4>Por equipaje</h4>
-  </div>
-
-  <div class="tarifa2">
-    <h4>Día adicional</h4>
-    <h2>2000 CFA</h2>
-    <h4>Por equipaje</h4>
-  </div>
-  </div>
-
-ASIA
-<div class="tarifasAsi">
-  <h1 class="nuestrasTarifas"><b>Nuestras tarifas fijas </b></h1>
-  <div class="tarifa1">
-    <h4>24 horas</h4>
-    <h2>900 JPY</h2>
-    <h4>Por equipaje</h4>
-  </div>
-
-  <div class="tarifa2">
-    <h4>Día adicional</h4>
-    <h2>900 JPY</h2>
-    <h4>Por equipaje</h4>
-  </div>
-  </div>
-AMÉRICA
-<div class="tarifasAme">
-  <h1 class="nuestrasTarifas"><b>Nuestras tarifas fijas </b></h1>
-  <div class="tarifa1">
-    <h4>24 horas</h4>
-    <h2>11 USD</h2>
-    <h4>Por equipaje</h4>
-  </div>
-
-  <div class="tarifa2">
-    <h4>Día adicional</h4>
-    <h2>7 USD</h2>
-    <h4>Por equipaje</h4>
-  </div>
-  </div>
-EUROPA
-<div class="tarifasEur">
-  <h1 class="nuestrasTarifas"><b>Nuestras tarifas fijas </b></h1>
-  <div class="tarifa1">
-    <h4>24 horas</h4>
-    <h2>6 €</h2>
-    <h4>Por equipaje</h4>
-  </div>
-
-  <div class="tarifa2">
-    <h4>Día adicional</h4>
-    <h2>4 €</h2>
-    <h4>Por equipaje</h4>
-  </div>
-  </div>
-OCEANÍA 
-<div class="tarifasOce">
-  <h1 class="nuestrasTarifas"><b>Nuestras tarifas fijas </b></h1>
-  <div class="tarifa1">
-    <h4>24 horas</h4>
-    <h2>10 AUD</h2>
-    <h4>Por equipaje</h4>
-  </div>
-
-  <div class="tarifa2">
-    <h4>Día adicional</h4>
-    <h2>8 AUD</h2>
-    <h4>Por equipaje</h4>
-  </div>
-  </div>
-ANTÁRTIDA
-<div class="tarifasAnt">
-  <h1 class="nuestrasTarifas"><b>Nuestras tarifas fijas </b></h1>
-  <div class="tarifa1">
-    <h4>24 horas</h4>
-    <h2><b>Gratis</b>></h2>
-    <h4>Por equipaje</h4>
-  </div>
-
-  <div class="tarifa2">
-    <h4>Día adicional</h4>
-    <h2><b>Gratis</b>></h2>
-    <h4>Por equipaje</h4>
-  </div>
-  </div>
+  
