@@ -44,7 +44,9 @@ getData(){
     this.user = data.data;
 
     console.log ("estas son las estaciones" ,this.user.estaciones);
-    if(this.user.estaciones.bookings !==null || this.user.estaciones.bookings!==""){
+    if(this.user.estaciones.bookings !==null && this.user.estaciones.bookings!=="" && !this.user.estaciones.bookings && this.user.estaciones.bookings !== undefined){
+      console.log("estas son las reservas de este user:", this.user.estaciones.bookings);
+      
       this.sharedService.setShowBookings(true);
     }
   },
