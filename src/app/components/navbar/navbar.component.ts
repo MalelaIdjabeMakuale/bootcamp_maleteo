@@ -14,6 +14,11 @@ export class NavbarComponent implements OnInit {
   showBookingsValue: boolean = false;
   constructor(private sharedService:SharedService){}
   ngOnInit(){
-    this.showBookingsValue = this.sharedService.showBookings;
+    this.sharedService.showBookings.subscribe((value:any)=>{
+      
+      this.showBookingsValue=value;
+    });
+    console.log(this.showBookingsValue);
+    
   }
 }

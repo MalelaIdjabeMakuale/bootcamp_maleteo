@@ -19,26 +19,33 @@ export class DetailPagesComponent {
   constructor(private router:Router, private authentication:AuthenticationService, private servicio:ServicesService,private rutaActivada: ActivatedRoute, private sharedService: SharedService) {}
 
   ngOnInit(): void {
-console.log
+    
     this.id = localStorage.getItem('id_user');
     this.getData();
+    
 
       if(!this.authentication.isAuthenticated()){
         swal('¡No puedes acceder si no estas identificado!');
         this.router.navigate(['/registro'])
       }
-    
+
+      
+
 }
 logOut():void{
   localStorage.removeItem('token');
-  this.router.navigate(['registro'])
+  this.router.navigate(['registro']);
+
 }
 
 getData(){
   this.servicio.getUserId(this.id).subscribe((data:any) => {
     console.log("esto es el data del user: ",data.data)
     this.user = data.data;
-    if(this.user.estaciones.bookings !==null || this.user.estaciones.bookings!==""){
+    console.log("log de prueba", this.user.estaciones[0].bookings.length);
+    
+    if (this.user.estaciones[0].bookings.length > 0) {
+    
       this.sharedService.setShowBookings(true);
     }
   },
