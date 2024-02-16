@@ -41,6 +41,11 @@ getData(){
 }
 aceptarReserva(reserva:any){
           const chatUpdate = {chats:reserva}
+
+          console.log("soy el numero de reserva??",reserva);
+          
+
+
           this.servicio.updateUser(this.id,chatUpdate).subscribe(
             (response) => {
               console.log('soy la response', response);
@@ -51,7 +56,7 @@ aceptarReserva(reserva:any){
               console.error('Error al actualizar el usuario', error);
             }
           );
-          this.router.navigate(["chatlist"]);
+          // this.router.navigate(["chatlist"]);
   
 }
 eliminarReserva(){

@@ -27,10 +27,17 @@ export class ChatlistComponent implements OnInit {
   }
   getData(){
     this.servicio.getUserId(this.id).subscribe((data:any) => {
-      this.user = data.data.chats;
-      console.log("chats del data en chatlist", this.user);
+      this.chats = data.data.chats;
+      console.log("chats del data en chatlist", this.chats);
     }
     )
   }
+  startchat(roomNumber:any){
+
+    localStorage.setItem("roomNumber", roomNumber);
+    console.log(roomNumber);
+    this.router.navigate(['/chat'])
+  }
+
 
 }

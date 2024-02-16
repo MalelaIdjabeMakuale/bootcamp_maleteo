@@ -19,7 +19,7 @@ import swal from 'sweetalert';
 export class Chat2Component implements OnInit {
   username: string = `${localStorage.getItem("user_name")}`;
   message: string = '';
-  chat:string = "sala1";
+  chat:string = `${localStorage.getItem("roomNumber")}`;
   messages: { username: string, message: string }[] = [];
 
   constructor(private http: HttpClient, private ngZone: NgZone, private authentication:AuthenticationService, private router:Router) { }

@@ -1,1 +1,6 @@
-<p>chatlist works!</p>
+<ul>
+    @for(chat of chats; track $index){
+        <li><h3>{{chat}}</h3> <button  (click)="startchat(chat)">activar chat</button></li>
+        
+    }
+</ul>
