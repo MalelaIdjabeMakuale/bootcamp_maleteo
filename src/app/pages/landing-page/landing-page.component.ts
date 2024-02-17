@@ -1,6 +1,7 @@
 
 import { CommonModule } from '@angular/common';
 import { Component,OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
 
 
@@ -13,6 +14,10 @@ import { RouterLink } from '@angular/router';
 })
 export class LandingPageComponent implements OnInit { showModal = false;
   showModal2 = false;
+
+  constructor(private titleService:Title) {
+    this.titleService.setTitle($localize`${ this.title}`);
+  }
 
 
   ngOnInit(): void {
@@ -31,6 +36,4 @@ export class LandingPageComponent implements OnInit { showModal = false;
       this.showModal2 = false;
     }
   };
-
-
 }

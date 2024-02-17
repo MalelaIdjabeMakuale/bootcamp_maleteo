@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="es-ES" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="3291724142246497202" datatype="html">
+        <source>Prepárate para <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br&gt;"/>liberarte de tu equipaje</source>
+        <target>Prepárate para liberarte de tu equipaje</target>
+
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/landing-page/landing-page.component.html</context>
+          <context context-type="linenumber">29,30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7244654948466621267" datatype="html">
+        <source>Encuentra a tu guardián y disfruta <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br&gt;"/>a tu manera. Miles de usuarios ya <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br&gt;"/>están aprovechando las ventajas.</source>
+        <target>Encuentra a tu guardián y disfruta a tu manera. Miles de usuarios ya están aprovechando las ventajas.</target>
+
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/landing-page/landing-page.component.html</context>
+          <context context-type="linenumber">30,32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9221473411956413346" datatype="html">
+        <source>Continuar</source>
+        <target>Continue</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/landing-page/landing-page.component.html</context>
+          <context context-type="linenumber">32,33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="493522795974185610" datatype="html">
+        <source>El mismo precio <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br&gt;"/>en cualquier parte</source>
+        <target>El mismo precio en cualquier parte</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/landing-page/landing-page.component.html</context>
+          <context context-type="linenumber">42,43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7543469906605069025" datatype="html">
+        <source>Dispondrás de un precio fijo estés <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br&gt;"/>donde estés sin importar el tamaño <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br&gt;"/> o el peso.</source>
+        <target>Dispondrás de un precio fijo estés donde estés sin importar el tamaño o el peso.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/landing-page/landing-page.component.html</context>
+          <context context-type="linenumber">43,44</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8564699334730560004" datatype="html">
+        <source>Empezar ya</source>
+        <target>Start now</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/landing-page/landing-page.component.html</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8622932514989284969" datatype="html">
+        <source>Consulta de precios</source>
+        <target>Price Inquiry</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/landing-page/landing-page.component.html</context>
+          <context context-type="linenumber">45,46</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

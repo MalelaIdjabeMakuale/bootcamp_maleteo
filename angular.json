@@ -4,6 +4,10 @@
   "newProjectRoot": "projects",
   "projects": {
     "maleteo": {
+      "i18n": {
+        "sourceLocale": "es-ES",
+        "locales": {"en-US": "src/locale/messages.en.xlf"}
+      },
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,6 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "localize": ["en-US"],
             "outputPath": "dist/maleteo",
             "index": "src/index.html",
             "browser": "src/main.ts",
@@ -94,12 +99,8 @@
   },
   "cli": {
 
-    "analytics": false
+    "analytics": false,
 
     "analytics": "de8bfebb-04e0-4eda-8439-8fa21ba998e0",
-
-
-    "analytics": false
-
   }
 }
