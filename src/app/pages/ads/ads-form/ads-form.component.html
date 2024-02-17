@@ -1,47 +1,47 @@
-<h2>Describenos tu espacio:</h2>
+<h2 i18n>Describenos tu espacio:</h2>
 <form [formGroup]="anuncioForm" (ngSubmit)="onSubmit()">
     <div>
-        <label for="name">Título de tu propiedad:</label>
+        <label i18n for="name">Título de tu propiedad:</label>
         <input type="text" id="name" formControlName="name">
     </div>
     <div>
-        <label for="propertyType">Tipo de propiedad:</label>
+        <label i18n for="propertyType">Tipo de propiedad:</label>
         <select id="propertyType" formControlName="propertyType">
-            <option value="Casa">Casa</option>
+            <option i18n value="Casa">Casa</option>
             <option value="Hotel">Hotel</option>
-            <option value="Establecimiento">Establecimiento</option>
+            <option i18n value="Establecimiento">Establecimiento</option>
         </select>
     </div>
     <div>
-        <label for="propertySpace">Tipo de espacio:</label>
+        <label i18n for="propertySpace">Tipo de espacio:</label>
         <select id="propertySpace" formControlName="propertySpace">
-            <option value="Habitación">Habitación</option>
+            <option i18n value="Habitación">Habitación</option>
             <option value="Hall">Hall</option>
-            <option value="Trastero">Trastero</option>
-            <option value="Buhardilla">Buhardilla</option>
-            <option value="Garaje">Garaje</option>
+            <option i18n value="Trastero">Trastero</option>
+            <option i18n value="Buhardilla">Buhardilla</option>
+            <option i18n value="Garaje">Garaje</option>
         </select>
     </div>
     <div id="map"></div>
     <div>
-        <label for="latitude">Latitud de tu propiedad:</label>
+        <label i18n for="latitude">Latitud de tu propiedad:</label>
         <input type="number" id="latitude" formControlName="latitude">
     </div>
     <div>
-        <label for="longitude">Longitud de tu propiedad:</label>
+        <label i18n for="longitude">Longitud de tu propiedad:</label>
         <input type="number" id="longitude" formControlName="longitude">
     </div>
     <div>
-        <label for="img">Imagen de tu propiedad:</label>
+        <label i18n for="img">Imagen de tu propiedad:</label>
         <input type="text" id="img" formControlName="img">
     </div>
     <div>
-        <label for="capacity">Capacidad de tu propiedad:</label>
+        <label i18n for="capacity">Capacidad de tu propiedad:</label>
         <input type="number" id="capacity" formControlName="capacity">
     </div>
     <div>
-        <label for="available">¿Disponible?</label>
+        <label i18n for="available">¿Disponible?</label>
         <input type="checkbox" id="available" formControlName="available">
     </div>
-    <button type="submit">Registrar Propiedad</button>
+    <button i18n type="submit">Registrar Propiedad</button>
 </form>

@@ -1,46 +1,46 @@
 @if(showLoginForm){
 <div class="iniciarSesion">
-  <h2 class="iniciar">Iniciar Sesión</h2>
+  <h2 i18n class="iniciar">Iniciar Sesión</h2>
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <label for="userName">Username:</label>
     <input type="text" id="userName" formControlName="name" />
-    <label for="password">Contraseña</label>
+    <label i18n for="password">Contraseña</label>
     <input type="password" id="password" formControlName="password" />
-   <button type="submit" class="submitButton">Iniciar sesión</button> 
-    
+   <button i18n type="submit" class="submitButton">Iniciar sesión</button>
+
   </form>
-</div> 
-<div class="registrate"><p> Si no tienes una cuenta, <button class="registerBtn"(click)="toggleForm()">registrate aquí</button></p></div>
+</div>
+<div class="registrate"><p i18n> Si no tienes una cuenta, <button class="registerBtn"(click)="toggleForm()">registrate aquí</button></p></div>
 
 
 
 }
 @if(!showLoginForm){
 <div class="registrarse">
-  <h2>Registrarse</h2>
+  <h2 i18n>Registrarse</h2>
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-    <label for="email">Direccion de correo electronico:</label>
+    <label i18n for="email">Direccion de correo electronico:</label>
     <input type="text" id="email" formControlName="email" />
     <label for="userName">Username:</label>
     <input type="text" id="userName" formControlName="userName" />
-    <label for="name">Nombre:</label>
+    <label i18n for="name">Nombre:</label>
     <input type="text" id="name" formControlName="name" />
-    <label for="surname">Apellidos:</label>
+    <label i18n for="surname">Apellidos:</label>
     <input type="text" id="surname" formControlName="surname" />
-    <label for="password">Contraseña:</label>
+    <label i18n for="password">Contraseña:</label>
     <input type="password" id="password" formControlName="password" />
-    <label for="confirmPassword">Repetir contraseña:</label>
+    <label i18n for="confirmPassword">Repetir contraseña:</label>
     <input
       type="password"
       id="confirmPassword"
       formControlName="confirmPassword"
     />
 
-    <button type="submit" class="submitButton">Registrarse</button>
+    <button i18n type="submit" class="submitButton">Registrarse</button>
   </form>
 </div>
 <div class="pulsa">
-  <p>¿Ya eres miembro? <button class="alreadyMember"(click)="toggleForm()">Pulsa aquí</button> </p>
+  <p i18n>¿Ya eres miembro? <button class="alreadyMember"(click)="toggleForm()">Pulsa aquí</button> </p>
 </div>
 
 

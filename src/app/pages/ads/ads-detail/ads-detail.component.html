@@ -2,12 +2,12 @@
   <div>
     <h2>{{ establecimiento.name }}</h2>
     <img src={{establecimiento.img}} alt={{establecimiento.name}}>
-    <p>{{establecimiento.tipoPropiedad}}</p>
+    <p >{{establecimiento.tipoPropiedad}}</p>
     <p>{{establecimiento.tipoEspacio}}</p>
     <p>{{establecimiento.capacidad}}</p>
-    <p>Direccion: {{ establecimiento.localizacion }}</p>
+    <p i18n>Direccion: {{ establecimiento.localizacion }}</p>
     @if(establecimiento.disponible===true){
-      <p>Disponible</p>
+      <p i18n>Disponible</p>
     }
     <!-- no me dejaba poner else, no se porque -->
     @if(establecimiento.disponible===false){

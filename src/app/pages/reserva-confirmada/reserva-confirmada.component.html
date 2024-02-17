@@ -1,12 +1,12 @@
 <div class="reservaConfirmada">
-  <h1><b>Listado de reservas pendientes:</b></h1>
+  <h1 i18n><b>Listado de reservas pendientes:</b></h1>
   <img src="../../assets/fenix.png">
   <ul>
     @for(reserva of reservas; track $index){
       <li>
        <p class="reserva">Reserva: {{reserva}}</p>
-       <button (click)="aceptarReserva(reserva)">Aceptar</button>
-       <button (click)="eliminarReserva()">Eliminar</button>
+       <button i18n (click)="aceptarReserva(reserva)">Aceptar</button>
+       <button i18n (click)="eliminarReserva()">Eliminar</button>
       </li>
     }
   </ul>

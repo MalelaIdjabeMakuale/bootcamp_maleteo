@@ -1,15 +1,15 @@
 
 
 <div class="container">
-<h1><b>Tus chats</b></h1>
+<h1 i18n><b>Tus chats</b></h1>
 
 <ul>
     @for(chat of chats; track $index){
-        <li> <b>Tu reserva nº:</b> </li>
+        <li i18n> <b>Tu reserva nº:</b> </li>
         <li><h3>{{chat}}</h3></li>
-        <li><button  (click)="startchat(chat)">Activar chat</button></li>
+        <li><button i18n (click)="startchat(chat)">Activar chat</button></li>
         <br>
-        
+
     }
 </ul>
 </div>

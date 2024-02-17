@@ -14,9 +14,10 @@ import { RouterLink } from '@angular/router';
 })
 export class LandingPageComponent implements OnInit { showModal = false;
   showModal2 = false;
+  title: string = 'maleteo';
 
   constructor(private titleService:Title) {
-    this.titleService.setTitle($localize`${ this.title}`);
+    this.titleService.setTitle(this.title);
   }
 
 
