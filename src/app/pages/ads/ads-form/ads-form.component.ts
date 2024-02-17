@@ -9,8 +9,8 @@ import {
 import { Router } from '@angular/router';
 import { ServicesService } from '../../../services/services.service';
 import swal from 'sweetalert';
-import { AuthenticationService } from '../../../services/authentication.service';
 import { HttpClient } from "@angular/common/http";
+import { AuthenticateService } from '../../../services/authenticate.service';
 
 @Component({
   selector: 'app-ads-form',
@@ -19,11 +19,10 @@ import { HttpClient } from "@angular/common/http";
   templateUrl: './ads-form.component.html',
   styleUrls: ['./ads-form.component.css'],
 })
-export class AdsFormComponent implements OnInit{
+export class AdsFormComponent implements OnInit {
   propertyType = ['Casa', 'Hotel', 'Establecimiento'];
   propertySpace = ['Habitación', 'Hall', 'Trastero', 'Buhardilla', 'Garaje'];
   selectedFile: File | null = null;
-
   anuncioForm: FormGroup = this.formbuilder.group({
     name: new FormControl(''),
     propertyType: new FormControl(''),
@@ -33,24 +32,32 @@ export class AdsFormComponent implements OnInit{
     aviable: new FormControl(true),
     longitude: new FormControl(''),
     latitude: new FormControl(''),
-
   });
 
   constructor(
     private formbuilder: FormBuilder,
     private router: Router,
     private servicesService: ServicesService,
-    private authentication: AuthenticationService,
-    private http: HttpClient
+    private http: HttpClient,
+    private authService: AuthenticateService
   ) {}
 
   ngOnInit(): void {
-    if(!this.authentication.isAuthenticated()){
-      swal('¡No puedes acceder si no estas identificado!');
-      this.router.navigate(['/registro'])
-    }
-  }
+    // Verificar token al cargar la página
+    const token = localStorage.getItem("token");
+    console.log('Token de autenticación:', token);
 
+    this.authService.authenticate(token!).subscribe(
+      (response) => {
+        console.log('Autenticación exitosa', response);
+      },
+      (error) => {
+        console.error('Error de autenticación', error);
+        this.router.navigate(['/registro']);
+      }
+    );
+  }
+  
   async onSubmit() {
     if (this.anuncioForm && this.anuncioForm.valid) {
       const formValue = this.anuncioForm.value;
@@ -58,58 +65,101 @@ export class AdsFormComponent implements OnInit{
 
       this.servicesService.registerLocker(formValue).subscribe(
         (response) => {
-          console.log('Register successful', response.estacion._id);
+          console.log('Registro exitoso', response.estacion);
 
-          console.log(response);
-
-          const userId = localStorage.getItem('id_user'); //aqui tengo que meter la logica para sacar el id del user
+          const userId = localStorage.getItem('id_user');
           const locker = response.estacion._id;
-          const lockerUpdate = {estaciones:locker}
-          console.log("soy de el antes update id locker!!! ",locker)
-          this.servicesService.updateUser(userId,lockerUpdate).subscribe(
-            (response) => {
-              console.log("soy la response",response)
-              console.log("soy de el update",userId)
+          const lockerUpdate = { estaciones: locker._id };
 
+          this.servicesService.updateUser(userId, lockerUpdate).subscribe(
+            (response) => {
               console.log('Usuario actualizado con la estacion');
             },
             (error) => {
               console.error('Error al actualizar el usuario', error);
             }
           );
-
-          // this.router.navigate(['/anuncios']);
         },
         (error) => {
           console.error('Error en el registro:', error);
+          console.error('Detalles del error:', error.error);
           this.anuncioForm.enable();
         }
       );
     }
   }
-  onFileSelected(event: any) {
-    this.selectedFile = event.target.files[0];
-  }
 
-  uploadFile() {
-    if (!this.selectedFile) {
-      return;
-    }
+  // onFileSelected(event: any) {
+  //   this.selectedFile = event.target.files[0];
+  // }
 
-    const formData = new FormData();
-    formData.append('file', this.selectedFile);
+  // uploadFile() {
+  //   if (!this.selectedFile) {
+  //     return;
+  //   }
 
-    this.http.post<any>('http://api-plum-six.vercel.app/api/upload', formData).subscribe(
-      (response:any) => {
-        console.log('Imagen subida con éxito:', response.imageUrl);
-        // Actualizar el formulario con la URL de la imagen
-        this.anuncioForm.patchValue({
-          img: response.imageUrl
-        });
-      },
-      (error:any) => {
-        console.error('Error al subir la imagen:', error);
-      }
-    );
-  }
+  //   const formData = new FormData();
+  //   formData.append('file', this.selectedFile);
+
+  //   this.http.post<any>('http://api-plum-six.vercel.app/api/upload', formData).subscribe(
+  //     (response: any) => {
+  //       console.log('Imagen subida con éxito:', response.imageUrl);
+  //       this.anuncioForm.patchValue({
+  //         img: response.imageUrl
+  //       });
+  //     },
+  //     (error: any) => {
+  //       console.error('Error al subir la imagen:', error);
+  //     }
+  //   );
+  // }
 }
+
+
+//   const direccion = this.anuncioForm.get('location')?.value;
+//   const direccionCodificada = encodeURIComponent(direccion);
+//   const nominatimAPI = "https://nominatim.openstreetmap.org/search?format=json&limit=1&q=";
+
+//   try {
+//     const response = await fetch(nominatimAPI + direccionCodificada);
+//     const data = await response.json();
+//     console.log(data);
+
+//     if (data.length > 0) {
+//       const latitude2 = data[0].lat;
+//       const longitude2 = data[0].lon;
+
+//       this.anuncioForm.patchValue({
+//         latitude: latitude2,
+//         longitude: longitude2
+//       });
+
+//       const formValue = this.anuncioForm.value;
+
+//       this.servicesService.registerLocker({
+//         name: formValue.name,
+//         latitude: formValue.latitude,
+//         longitude: formValue.longitude,
+//         propertyType: formValue.propertyType,
+//         propertySpace: formValue.propertySpace,
+//         capacity: formValue.capacity,
+//         img: formValue.img,
+//         available: formValue.available,
+//       }).subscribe(
+//         response => {
+//           console.log('Datos enviados con exito a la API', response);
+//           console.log(response);
+
+//           this.router.navigate(['/anuncios']);
+//         },
+//         error => {
+//           console.error('Error al enviar datos a la API:', error);
+//         }
+//       );
+//     } else {
+//       console.log('Sin resultados para la dirección proporcionada');
+//     }
+//   } catch (error) {
+//     console.error('Error al obtener datos de Nominatim', error);
+
+

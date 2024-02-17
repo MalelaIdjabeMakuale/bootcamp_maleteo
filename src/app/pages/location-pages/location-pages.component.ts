@@ -3,7 +3,9 @@ import { InterfaceEstaciones } from './../../interfaces/interface-estaciones';
 import { Component, OnInit } from '@angular/core';
 import {ReactiveFormsModule ,FormControl, FormGroup} from '@angular/forms';
 import { RouterLink, Router } from '@angular/router';
-import { AuthenticationService } from '../../services/authentication.service';
+import { AuthenticateService } from '../../services/authenticate.service';
+
+
 import swal from 'sweetalert';
 
 
@@ -19,14 +21,24 @@ import swal from 'sweetalert';
   styleUrl: './location-pages.component.css'
 })
 export class LocationPagesComponent implements OnInit {
+  constructor(private router:Router, private authService: AuthenticateService ){}
+
   ngOnInit(): void {
-    if(!this.authentication.isAuthenticated()){
-      swal('¡No puedes acceder si no estas identificado!');
-      this.router.navigate(['/registro'])
-    }
+    const token = localStorage.getItem("token");
+    console.log('Token de autenticación:', token);
+
+    this.authService.authenticate(token!).subscribe(
+      (response) => {
+        console.log('Autenticación exitosa', response);
+      },
+      (error) => {
+        console.error('Error de autenticación', error);
+        this.router.navigate(['/registro']);
+      }
+    );
+
   }
   
-  constructor(private router:Router, private authentication:AuthenticationService){}
   profileForm = new FormGroup({
     addressForm: new FormControl(''),
     dayPutForm : new FormControl(''),

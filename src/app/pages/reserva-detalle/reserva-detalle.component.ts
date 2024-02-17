@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { ServicesService } from '../../services/services.service';
-import { AuthenticationService } from '../../services/authentication.service';
+import { AuthenticateService } from '../../services/authenticate.service';
 import swal from 'sweetalert';
 
 
@@ -13,7 +13,7 @@ import swal from 'sweetalert';
   styleUrl: './reserva-detalle.component.css'
 })
 export class ReservaDetalleComponent implements OnInit{
-  constructor(private router: Router, private servicesService:ServicesService, private authentication:AuthenticationService) { }
+  constructor(private router: Router, private servicesService:ServicesService,  private authService: AuthenticateService) { }
   idLocker = localStorage.getItem("selectedLockeId")
   idUser = localStorage.getItem("id_user")
   lockerUpdate = {"bookings": `${this.idUser}_${this.idLocker}`};
@@ -41,10 +41,19 @@ localStorage.removeItem('addressForm');
   }
 
   ngOnInit(): void {
-    if(!this.authentication.isAuthenticated()){
-      swal('¡No puedes acceder si no estas identificado!');
-      this.router.navigate(['/registro'])
+   
+  const token = localStorage.getItem("token");
+  console.log('Token de autenticación:', token);
+
+  this.authService.authenticate(token!).subscribe(
+    (response) => {
+      console.log('Autenticación exitosa', response);
+    },
+    (error) => {
+      console.error('Error de autenticación', error);
+      this.router.navigate(['/registro']);
     }
+  );
   
 
     const arrivalDate = localStorage.getItem("dayPutForm");

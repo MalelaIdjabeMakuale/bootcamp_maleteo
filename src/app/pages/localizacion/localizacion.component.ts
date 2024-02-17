@@ -3,7 +3,8 @@ import { ServicesService } from '../../services/services.service';
 import { user } from '../../interfaces/user_interface';
 import { RouterLink, Router } from '@angular/router';
 import { Map, marker, tileLayer, icon } from 'leaflet';
-import { AuthenticationService } from '../../services/authentication.service';
+import { AuthenticateService } from '../../services/authenticate.service';
+
 import swal from 'sweetalert';
 
 
@@ -28,18 +29,26 @@ export class LocalizacionComponent implements OnInit {
   isLoading = true;
 
 
-  constructor(private router:Router, private servicio: ServicesService, private authentication:AuthenticationService) {}
+  constructor(private router:Router, private servicio: ServicesService,private authService: AuthenticateService) {}
 
   ngOnInit(): void {
     this.servicio.getAllUsers().subscribe((data: any) => {
       this.allusers = data;
       console.log('soy all', this.allusers);
       this.getLocation();
-
-      if(!this.authentication.isAuthenticated()){
-        swal('¡No puedes acceder si no estas identificado!');
-        this.router.navigate(['/registro'])
-      }
+        const token = localStorage.getItem("token");
+              console.log('Token de autenticación:', token);
+          
+              this.authService.authenticate(token!).subscribe(
+                (response) => {
+                  console.log('Autenticación exitosa', response);
+                },
+                (error) => {
+                  console.error('Error de autenticación', error);
+                  this.router.navigate(['/registro']);
+                }
+              );
+  
 
     });
   }

@@ -3,7 +3,7 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { user } from '../../interfaces/user_interface';
 import { ServicesService } from '../../services/services.service';
 import { SharedService } from '../../services/shared.service';
-import { AuthenticationService } from '../../services/authentication.service';
+import { AuthenticateService } from '../../services/authenticate.service';
 import swal from 'sweetalert';
 
 @Component({
@@ -16,20 +16,27 @@ import swal from 'sweetalert';
 export class DetailPagesComponent {
   id!:string | null;
   user!:user;
-  constructor(private router:Router, private authentication:AuthenticationService, private servicio:ServicesService,private rutaActivada: ActivatedRoute, private sharedService: SharedService) {}
+  constructor(private router:Router, private authService: AuthenticateService, private servicio:ServicesService,private rutaActivada: ActivatedRoute, private sharedService: SharedService) {}
 
   ngOnInit(): void {
     
     this.id = localStorage.getItem('id_user');
     this.getData();
+
+
+
+  const token = localStorage.getItem("token");
+        console.log('Token de autenticación:', token);
     
-
-      if(!this.authentication.isAuthenticated()){
-        swal('¡No puedes acceder si no estas identificado!');
-        this.router.navigate(['/registro'])
-      }
-
-      
+        this.authService.authenticate(token!).subscribe(
+          (response) => {
+            console.log('Autenticación exitosa', response);
+          },
+          (error) => {
+            console.error('Error de autenticación', error);
+            this.router.navigate(['/registro']);
+          }
+        );
 
 }
 logOut():void{

@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { AuthenticationService } from '../services/authentication.service';
 import { Router } from '@angular/router';
 import swal from 'sweetalert';
+import { AuthenticateService } from '../services/authenticate.service';
 
 
 
@@ -22,17 +23,25 @@ export class Chat2Component implements OnInit {
   chat:string = `${localStorage.getItem("roomNumber")}`;
   messages: { username: string, message: string }[] = [];
 
-  constructor(private http: HttpClient, private ngZone: NgZone, private authentication:AuthenticationService, private router:Router) { }
+  constructor(private http: HttpClient, private ngZone: NgZone,private authService: AuthenticateService, private router:Router) { }
   
   
 
 
 
   ngOnInit(): void {
-    if(!this.authentication.isAuthenticated()){
-      swal('¡No puedes acceder si no estas identificado!');
-      this.router.navigate(['/registro'])
-    }
+    const token = localStorage.getItem("token");
+    console.log('Token de autenticación:', token);
+
+    this.authService.authenticate(token!).subscribe(
+      (response) => {
+        console.log('Autenticación exitosa', response);
+      },
+      (error) => {
+        console.error('Error de autenticación', error);
+        this.router.navigate(['/registro']);
+      }
+    );
     console.log(this.messages);
     Pusher.logToConsole = true;
 
