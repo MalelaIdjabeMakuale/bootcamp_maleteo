@@ -29,12 +29,21 @@
         <b>Tipo de espacio: </b>{{ selectedPropertyTipe }}
       </h3>
     </div>
-    <div class="separacion">
-      <h3 class="locker_title">
-        <b>Disponibilidad: </b>
-        <span>{{ selectedLockerAvi ? '√' : '✗' }}</span>
-      </h3>
-    </div>
+
+    @if (selectedLockerAvi === true) {
+  <div class="separacion">
+    <h3 class="locker_title">
+      <b>Disponibilidad: </b>
+      <span class="tick">✔</span>
+    </h3>
+  </div>}
+  @else { <div class="separacion">
+    <h3 class="locker_title">
+      <b>Disponibilidad: </b>
+      <span>❌</span>
+    </h3>
+  </div>
+  }
     <div class="separacionImg">
       <h3><b>Fotos del espacio: </b></h3>
       <img src="{{ selectedLockerImg }}" alt="{{ selectedLockerName }}" />
@@ -46,3 +55,5 @@
   </div>
   }
 </div>
+
+

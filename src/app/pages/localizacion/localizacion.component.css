@@ -88,3 +88,7 @@ img {
   margin: 20px 20px;
   cursor: pointer;
 }
+
+.tick {
+  color: #008000;
+}
