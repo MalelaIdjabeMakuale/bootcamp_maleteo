@@ -66,19 +66,25 @@ export class ReservaConfirmadaComponent implements OnInit {
       }
     );
 
-    this.servicio.updateUser(this.id, chatUpdate).subscribe(
-      (response) => {
-        console.log('soy la response', response);
-        console.log('soy de el update', this.id);
-        console.log('Usuario actualizado con la estacion');
-      },
-      (error) => {
-        console.error('Error al actualizar el usuario', error);
-      }
-    );
-    // this.router.navigate(["chatlist"]);
-  }
-  eliminarReserva() {
-    console.log('eliminar funciona');
-  }
+
+
+
+          this.servicio.updateUser(this.id,chatUpdate).subscribe(
+            (response) => {
+              console.log('soy la response', response);
+              console.log('soy de el update', this.id);
+              console.log('Usuario actualizado con la estacion');
+            },
+            (error) => {
+              console.error('Error al actualizar el usuario', error);
+            }
+          );
+          this.router.navigate(["chatlist"]);
+  
+}
+eliminarReserva(){
+  console.log("eliminar funciona");
+  
+  
+}
 }

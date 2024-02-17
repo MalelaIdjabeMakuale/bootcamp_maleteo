@@ -10,8 +10,14 @@ padding: 2vh;}
     font-family: "Catamaran", sans-serif;
     color: #000000;
     font-size: 20px;
-    padding: 20px;
+
    
+}
+
+.tarifasText { display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .botonAtras button{border: none;
@@ -20,15 +26,7 @@ font:bolder;
 outline: none;
 font-size: 40px;}
 
-.tarifas {
-    padding: 20px;
-    height: 85vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    
-}
+
 
 .tarifa1, .tarifa2 {
     text-align: center; 
@@ -38,15 +36,16 @@ font-size: 40px;}
     background-color: #FF8200;
     width: 32vh;
     border-radius: 6px;
-    padding-top: 2vh;
-    padding-bottom: 2vh;
-    margin-bottom: 3vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+   margin: 50px;
     h4 {
         font-family: "Noto Sans", sans-serif;
         color: #ffffff;
         font-size: 10px;
-        margin-bottom: 2vh;
-
+        margin: 2vh;
     }
     
     h2 {
@@ -60,8 +59,11 @@ font-size: 40px;}
     background-color: #01B5E6;
     width: 32vh;
     border-radius: 6px;
-    padding-top: 2vh;
-    padding-bottom: 2vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+   margin: 50px;
     h4 {
         font-family: "Noto Sans", sans-serif;
         color: #ffffff;
@@ -89,4 +91,16 @@ font-size: 40px;}
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
   }
+
+.selecciona {
+    padding: 10px; 
+}
+
+select { margin: 20px 20px;
+    opacity: 0.7;
+}
+
+option { background-color: black;}
+
