@@ -22,4 +22,6 @@ button {
   .container {
     padding: 30px;
   }
+
+  li {font-size: small;}
   
