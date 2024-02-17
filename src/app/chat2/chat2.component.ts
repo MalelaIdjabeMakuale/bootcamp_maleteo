@@ -18,7 +18,7 @@ import { AuthenticateService } from '../services/authenticate.service';
   styleUrls: ['./chat2.component.css']
 })
 export class Chat2Component implements OnInit {
-  username: string = `${localStorage.getItem("user_name")}`;
+  username: string = `${localStorage.getItem("user_name")}` || "";
   message: string = '';
   chat:string = `${localStorage.getItem("roomNumber")}`;
   messages: { username: string, message: string }[] = [];
@@ -57,6 +57,7 @@ export class Chat2Component implements OnInit {
     });
   }
 
+
   submit(): void {
     this.http.post(`https://api-plum-six.vercel.app/api/messages`, {
       username: this.username,
@@ -66,5 +67,9 @@ export class Chat2Component implements OnInit {
       () => this.message = '',
       (error: any) => console.error('Error submitting message:', error)
     );
+  }
+
+  getMessageContentClass(username: string): string {
+    return username === this.username ? 'message-content-orange' : 'message-content-blue';
   }
 }
