@@ -21,7 +21,7 @@ export class LocalizacionComponent implements OnInit {
   selectedLockerCapacity: string = '';
   selectedLockerPropertySpace: string = '';
   selectedLockerImg: string = '';
-  selectedLockerAvi: string = '';
+  selectedLockerAvi: boolean = true;
   selectedPropertyTipe: string = '';
   lat: any;
   lon: any;
@@ -107,10 +107,9 @@ export class LocalizacionComponent implements OnInit {
         this.selectedLockerName = element.name;
         this.selectedLockerCapacity = element.capacity;
       this. selectedLockerImg = element.img;
-       this.selectedLockerAvi = element.avi;
+       this.selectedLockerAvi = element.aviable;
        this.selectedLockerPropertySpace = element.propertySpace;
        this.selectedPropertyTipe = element.propertyTipe;
-    
        localStorage.setItem("selectedLockeId", element._id )      
       });
 
