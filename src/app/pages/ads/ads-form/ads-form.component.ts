@@ -55,9 +55,44 @@ export class AdsFormComponent implements OnInit {
         console.error('Error de autenticación', error);
         this.router.navigate(['/registro']);
       }
-    );
+      );
+      this.createMap();
   }
-  
+  createMap(): void {
+    this.isLoading = true;
+    const map = new Map('map').setView([41.3851, 2.1734], 13);
+    tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    }).addTo(map);
+    this.isLoading = false;
+
+    map.on('click', (e: LeafletMouseEvent) => {
+      this.latitude = e.latlng.lat;
+      this.longitude = e.latlng.lng;
+
+      if (this.marker) {
+        map.removeLayer(this.marker);
+      }
+      this.marker = marker([this.latitude, this.longitude], {
+        icon: icon({
+          iconSize: [25, 41],
+          iconAnchor: [13, 41],
+          iconUrl: 'leaflet/marker-icon.png',
+          shadowUrl: 'leaflet/marker-shadow.png'
+        })
+      }).addTo(map);
+      const latitudeControl = this.anuncioForm.get('latitude');
+const longitudeControl = this.anuncioForm.get('longitude');
+
+if (latitudeControl && longitudeControl) {
+  latitudeControl.setValue(this.latitude);
+  longitudeControl.setValue(this.longitude);
+}
+
+    });
+  }
   async onSubmit() {
     if (this.anuncioForm.valid) {
       const formValue = this.anuncioForm.value;
@@ -70,11 +105,13 @@ export class AdsFormComponent implements OnInit {
 
           const userId = localStorage.getItem('id_user');
           const locker = response.estacion._id;
-          const lockerUpdate = { estaciones: locker._id };
+          const lockerUpdate = { estaciones: locker};
 
           this.servicesService.updateUser(userId, lockerUpdate).subscribe(
             (response) => {
+              console.log(locker);
               console.log('Usuario actualizado con la estacion');
+              this.router.navigate(['/ubicacion']);
             },
             (error) => {
               console.error('Error al actualizar el usuario', error);

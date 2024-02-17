@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { SharedService } from '../../services/shared.service';
 
@@ -12,6 +12,9 @@ import { SharedService } from '../../services/shared.service';
 export class NavbarComponent implements OnInit {
 
   showBookingsValue: boolean = false;
+  showNavbar: boolean = false; 
+  scrollTimeout: any;
+
   constructor(private sharedService:SharedService){}
   ngOnInit(){
     this.sharedService.showBookings.subscribe((value:any)=>{
@@ -21,4 +24,6 @@ export class NavbarComponent implements OnInit {
     console.log(this.showBookingsValue);
     
   }
+
+
 }

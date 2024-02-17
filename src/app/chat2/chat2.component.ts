@@ -18,20 +18,25 @@ import { AuthenticateService } from '../services/authenticate.service';
   styleUrls: ['./chat2.component.css']
 })
 export class Chat2Component implements OnInit {
-  username: string = `${localStorage.getItem("user_name")}`;
+  username: string = `${localStorage.getItem("user_name")}` || "";
   message: string = '';
-  chat:string = `${localStorage.getItem("roomNumber")}`;
+  chat: string = `${localStorage.getItem("roomNumber")}`;
   messages: { username: string, message: string }[] = [];
 
-  constructor(private http: HttpClient, private ngZone: NgZone,private authService: AuthenticateService, private router:Router) { }
-  
-  
-
-
+  constructor(
+    private http: HttpClient,
+    private ngZone: NgZone,
+    private authService: AuthenticateService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
+    this.checkAuthentication();
+    this.setupPusher();
+  }
+
+  checkAuthentication(): void {
     const token = localStorage.getItem("token");
-    console.log('Token de autenticación:', token);
 
     this.authService.authenticate(token!).subscribe(
       (response) => {
@@ -42,18 +47,25 @@ export class Chat2Component implements OnInit {
         this.router.navigate(['/registro']);
       }
     );
-    console.log(this.messages);
+  }
+
+  setupPusher(): void {
     Pusher.logToConsole = true;
 
     const pusher = new Pusher('9e5227b9c4e79c8891ed', {
-      cluster: 'eu'
+      cluster: 'eu',
     });
 
     const channel = pusher.subscribe(this.chat);
-    channel.bind('message', (data: { username: string, message: string}) => {
-      this.ngZone.run(() => {
-        this.messages.push(data);
-      });
+    channel.bind('message', (data: { username: string, message: string }) => {
+      this.handlePusherMessage(data);
+    });
+  }
+
+  handlePusherMessage(data: { username: string, message: string }): void {
+    console.log('Mensaje recibido:', data);
+    this.ngZone.run(() => {
+      this.messages.push(data);
     });
   }
 
@@ -66,5 +78,9 @@ export class Chat2Component implements OnInit {
       () => this.message = '',
       (error: any) => console.error('Error submitting message:', error)
     );
+  }
+
+  getMessageContentClass(username: string): string {
+    return username === this.username ? 'message-content-orange' : 'message-content-blue';
   }
 }
