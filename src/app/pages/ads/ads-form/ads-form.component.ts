@@ -111,6 +111,7 @@ if (latitudeControl && longitudeControl) {
             (response) => {
               console.log(locker);
               console.log('Usuario actualizado con la estacion');
+              this.router.navigate(['/ubicacion']);
             },
             (error) => {
               console.error('Error al actualizar el usuario', error);
