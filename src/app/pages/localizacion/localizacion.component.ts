@@ -110,7 +110,6 @@ export class LocalizacionComponent implements OnInit {
        this.selectedLockerAvi = element.avi;
        this.selectedLockerPropertySpace = element.propertySpace;
        this.selectedPropertyTipe = element.propertyTipe;
-    
        localStorage.setItem("selectedLockeId", element._id )      
       });
 
