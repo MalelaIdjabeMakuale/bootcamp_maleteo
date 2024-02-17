@@ -69,7 +69,6 @@ export class AdsFormComponent implements OnInit {
           console.log('Registro exitoso', response.estacion);
 
           const userId = localStorage.getItem('id_user');
-          const userId = localStorage.getItem('id_user');
           const locker = response.estacion._id;
           const lockerUpdate = { estaciones: locker._id };
 
@@ -167,16 +166,16 @@ export class AdsFormComponent implements OnInit {
 //     console.error('Error al obtener datos de Nominatim', error);
 
 
-    this.http.post<any>('http://api-plum-six.vercel.app/api/upload', formData).subscribe(
-      (response: any) => {
-        console.log('Imagen subida con éxito:', response.imageUrl);
-        this.anuncioForm.patchValue({
-          img: response.imageUrl
-        });
-      },
-      (error: any) => {
-        console.error('Error al subir la imagen:', error);
-      }
-    );
-  }
-}
+  //   this.http.post<any>('http://api-plum-six.vercel.app/api/upload', formData).subscribe(
+  //     (response: any) => {
+  //       console.log('Imagen subida con éxito:', response.imageUrl);
+  //       this.anuncioForm.patchValue({
+  //         img: response.imageUrl
+  //       });
+  //     },
+  //     (error: any) => {
+  //       console.error('Error al subir la imagen:', error);
+  //     }
+  //   );
+  // }
+// }
