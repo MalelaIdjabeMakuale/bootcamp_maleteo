@@ -1,21 +1,27 @@
 <div class="container">
-  <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white">
-    <div class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
-      <input class="fs-5 fw-semibold" [(ngModel)]="username"/>
-      <input class="fs-5 fw-semibold" placeholder="write a message" [(ngModel)]="message"/>
+<div class="nombre-chat">
+  <h1>Chat de tu reserva nº</h1>
+  <h6> {{chat}}</h6>
+</div>
 
+  <div class="chat-container">
+    <div class="input-container">
+      <input class="username-input" [(ngModel)]="username" disabled=""/>
+      <input class="message-input" placeholder="Escribe aquí tu mensaje..." [(ngModel)]="message"  />
     </div>
-    <div class="list-group list-group-flush border-bottom scrollarea">
-      <div class="list-group-item list-group-item-action py-3 lh-tight"
-           *ngFor="let msg of messages"
-      >
-        <div class="d-flex w-100 align-items-center justify-content-between">
-          <strong class="mb-1">{{msg.username}}</strong>
-        </div>
-        <div class="col-10 mb-1 small">{{msg.message}}</div>
-      </div>
+    <div class="messages-container">
+      <ul class="message-list">
+        <li class="message-item" *ngFor="let msg of messages">
+          <div class="message-username">
+            <b>{{ msg.username }}</b>
+          </div>
+          <div class="message-content" [ngClass]="getMessageContentClass(msg.username)" >{{ msg.message }}</div>
+        </li>
+      </ul>
     </div>
   </div>
-    <button (click)="submit()">enviar</button>
-    <!-- <input class="form-control" placeholder="Write a message" [(ngModel)]="username"/> -->
+  <button class="send-button" (click)="submit()">Enviar</button>
 </div>
+  <!-- <input class="form-control" placeholder="Write a message" [(ngModel)]="username"/> -->
+
+

@@ -1,16 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ServicesService } from '../../../services/services.service';
 import swal from 'sweetalert';
 import { HttpClient } from "@angular/common/http";
 import { AuthenticateService } from '../../../services/authenticate.service';
+import { Map, marker, tileLayer, icon, LeafletMouseEvent } from 'leaflet';
 
 @Component({
   selector: 'app-ads-form',
@@ -23,6 +18,11 @@ export class AdsFormComponent implements OnInit {
   propertyType = ['Casa', 'Hotel', 'Establecimiento'];
   propertySpace = ['Habitación', 'Hall', 'Trastero', 'Buhardilla', 'Garaje'];
   selectedFile: File | null = null;
+  longitude: any;
+  latitude: any;
+  isLoading = true;
+  marker: any;
+
   anuncioForm: FormGroup = this.formbuilder.group({
     name: new FormControl(''),
     propertyType: new FormControl(''),
@@ -30,8 +30,8 @@ export class AdsFormComponent implements OnInit {
     capacity: new FormControl(''),
     img: new FormControl(''),
     aviable: new FormControl(true),
-    longitude: new FormControl(''),
     latitude: new FormControl(''),
+    longitude: new FormControl('')
   });
 
   constructor(
@@ -55,13 +55,49 @@ export class AdsFormComponent implements OnInit {
         console.error('Error de autenticación', error);
         this.router.navigate(['/registro']);
       }
-    );
+      );
+      this.createMap();
   }
-  
+  createMap(): void {
+    this.isLoading = true;
+    const map = new Map('map').setView([41.3851, 2.1734], 13);
+    tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    }).addTo(map);
+    this.isLoading = false;
+
+    map.on('click', (e: LeafletMouseEvent) => {
+      this.latitude = e.latlng.lat;
+      this.longitude = e.latlng.lng;
+
+      if (this.marker) {
+        map.removeLayer(this.marker);
+      }
+      this.marker = marker([this.latitude, this.longitude], {
+        icon: icon({
+          iconSize: [25, 41],
+          iconAnchor: [13, 41],
+          iconUrl: 'leaflet/marker-icon.png',
+          shadowUrl: 'leaflet/marker-shadow.png'
+        })
+      }).addTo(map);
+      const latitudeControl = this.anuncioForm.get('latitude');
+const longitudeControl = this.anuncioForm.get('longitude');
+
+if (latitudeControl && longitudeControl) {
+  latitudeControl.setValue(this.latitude);
+  longitudeControl.setValue(this.longitude);
+}
+
+    });
+  }
   async onSubmit() {
-    if (this.anuncioForm && this.anuncioForm.valid) {
+    if (this.anuncioForm.valid) {
       const formValue = this.anuncioForm.value;
-      console.log(formValue);
+
+      this.isLoading = true; // Iniciar la carga
 
       this.servicesService.registerLocker(formValue).subscribe(
         (response) => {
@@ -69,10 +105,11 @@ export class AdsFormComponent implements OnInit {
 
           const userId = localStorage.getItem('id_user');
           const locker = response.estacion._id;
-          const lockerUpdate = { estaciones: locker._id };
+          const lockerUpdate = { estaciones: locker};
 
           this.servicesService.updateUser(userId, lockerUpdate).subscribe(
             (response) => {
+              console.log(locker);
               console.log('Usuario actualizado con la estacion');
             },
             (error) => {
@@ -85,7 +122,9 @@ export class AdsFormComponent implements OnInit {
           console.error('Detalles del error:', error.error);
           this.anuncioForm.enable();
         }
-      );
+      ).add(() => {
+        this.isLoading = false; // Finalizar la carga
+      });
     }
   }
 
@@ -163,3 +202,16 @@ export class AdsFormComponent implements OnInit {
 //     console.error('Error al obtener datos de Nominatim', error);
 
 
+  //   this.http.post<any>('http://api-plum-six.vercel.app/api/upload', formData).subscribe(
+  //     (response: any) => {
+  //       console.log('Imagen subida con éxito:', response.imageUrl);
+  //       this.anuncioForm.patchValue({
+  //         img: response.imageUrl
+  //       });
+  //     },
+  //     (error: any) => {
+  //       console.error('Error al subir la imagen:', error);
+  //     }
+  //   );
+  // }
+// }
