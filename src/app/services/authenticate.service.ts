@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 
 export class AuthenticateService {
-private apiUrl = 'http://localhost:3000'; // Reemplaza con la URL de tu servidor
+private apiUrl = 'https://api-plum-six.vercel.app'; // Reemplaza con la URL de tu servidor
 
   constructor(private http: HttpClient) {}
 

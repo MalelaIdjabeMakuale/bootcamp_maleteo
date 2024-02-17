@@ -9,8 +9,8 @@ import { user } from '../interfaces/user_interface';
 })
 export class ServicesService {
 
-  private apiUrl = 'https://api-plum-six.vercel.app//api/estaciones';
-  private apiUrl2 = `https://api-plum-six.vercel.app//api/user`;
+  private apiUrl = 'https://api-plum-six.vercel.app/api/estaciones';
+  private apiUrl2 = `https://api-plum-six.vercel.app/api/user`;
 
   constructor(private http: HttpClient) {}
 
