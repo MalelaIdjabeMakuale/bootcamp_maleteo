@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ServicesService } from '../../../services/services.service';
-import swal from 'sweetalert';
 import { HttpClient } from "@angular/common/http";
 import { AuthenticateService } from '../../../services/authenticate.service';
 import { Map, marker, tileLayer, icon, LeafletMouseEvent } from 'leaflet';
@@ -18,10 +17,10 @@ export class AdsFormComponent implements OnInit {
   propertyType = ['Casa', 'Hotel', 'Establecimiento'];
   propertySpace = ['Habitación', 'Hall', 'Trastero', 'Buhardilla', 'Garaje'];
   selectedFile: File | null = null;
-  longitude: any;
-  latitude: any;
   isLoading = true;
   marker: any;
+  lat: any;
+  lon: any;
 
   anuncioForm: FormGroup = this.formbuilder.group({
     name: new FormControl(''),
@@ -43,7 +42,8 @@ export class AdsFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Verificar token al cargar la página
+    this.getLocation();
+
     const token = localStorage.getItem("token");
     console.log('Token de autenticación:', token);
 
@@ -55,12 +55,12 @@ export class AdsFormComponent implements OnInit {
         console.error('Error de autenticación', error);
         this.router.navigate(['/registro']);
       }
-      );
-      this.createMap();
+    );
   }
+
   createMap(): void {
     this.isLoading = true;
-    const map = new Map('map').setView([41.3851, 2.1734], 13);
+    const map = new Map('map').setView([this.lat, this.lon], 13);
     tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
       attribution:
@@ -68,36 +68,40 @@ export class AdsFormComponent implements OnInit {
     }).addTo(map);
     this.isLoading = false;
 
+    const customMarker = marker([this.lat, this.lon], {
+      icon: icon({
+        iconSize: [32, 32],
+        iconAnchor: [16, 32],
+        iconUrl: '../../../assets/icons8-location-pin-32.png',
+      })
+    }).addTo(map);
+
+    const latitudeControl = this.anuncioForm.get('latitude');
+    const longitudeControl = this.anuncioForm.get('longitude');
+
+    if (latitudeControl && longitudeControl) {
+      latitudeControl.setValue(this.lat);
+      longitudeControl.setValue(this.lon);
+    }
+
     map.on('click', (e: LeafletMouseEvent) => {
-      this.latitude = e.latlng.lat;
-      this.longitude = e.latlng.lng;
+      this.lat = e.latlng.lat;
+      this.lon = e.latlng.lng;
 
-      if (this.marker) {
-        map.removeLayer(this.marker);
+      customMarker.setLatLng([this.lat, this.lon]);
+
+      if (latitudeControl && longitudeControl) {
+        latitudeControl.setValue(this.lat);
+        longitudeControl.setValue(this.lon);
       }
-      this.marker = marker([this.latitude, this.longitude], {
-        icon: icon({
-          iconSize: [25, 41],
-          iconAnchor: [13, 41],
-          iconUrl: 'leaflet/marker-icon.png',
-          shadowUrl: 'leaflet/marker-shadow.png'
-        })
-      }).addTo(map);
-      const latitudeControl = this.anuncioForm.get('latitude');
-const longitudeControl = this.anuncioForm.get('longitude');
-
-if (latitudeControl && longitudeControl) {
-  latitudeControl.setValue(this.latitude);
-  longitudeControl.setValue(this.longitude);
-}
-
     });
   }
+
   async onSubmit() {
     if (this.anuncioForm.valid) {
       const formValue = this.anuncioForm.value;
 
-      this.isLoading = true; // Iniciar la carga
+      this.isLoading = true; 
 
       this.servicesService.registerLocker(formValue).subscribe(
         (response) => {
@@ -105,7 +109,7 @@ if (latitudeControl && longitudeControl) {
 
           const userId = localStorage.getItem('id_user');
           const locker = response.estacion._id;
-          const lockerUpdate = { estaciones: locker};
+          const lockerUpdate = { estaciones: locker };
 
           this.servicesService.updateUser(userId, lockerUpdate).subscribe(
             (response) => {
@@ -124,10 +128,22 @@ if (latitudeControl && longitudeControl) {
           this.anuncioForm.enable();
         }
       ).add(() => {
-        this.isLoading = false; // Finalizar la carga
+        this.isLoading = false;
       });
     }
   }
+
+  getLocation(): void {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.lat = position.coords.latitude;
+        this.lon = position.coords.longitude;
+        this.createMap();
+      });
+    }
+  }
+}
+
 
   // onFileSelected(event: any) {
   //   this.selectedFile = event.target.files[0];
@@ -153,7 +169,7 @@ if (latitudeControl && longitudeControl) {
   //     }
   //   );
   // }
-}
+
 
 
 //   const direccion = this.anuncioForm.get('location')?.value;
