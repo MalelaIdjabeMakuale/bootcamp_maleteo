@@ -12,17 +12,17 @@ import { SharedService } from '../../services/shared.service';
 export class NavbarComponent implements OnInit {
 
   showBookingsValue: boolean = false;
-  showNavbar: boolean = false; 
+  showNavbar: boolean = false;
   scrollTimeout: any;
 
   constructor(private sharedService:SharedService){}
   ngOnInit(){
     this.sharedService.showBookings.subscribe((value:any)=>{
-      
+
       this.showBookingsValue=value;
     });
     console.log(this.showBookingsValue);
-    
+
   }
 
 

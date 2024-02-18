@@ -6,8 +6,8 @@ import { HttpClient } from '@angular/common/http';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AuthenticationService } from './services/authentication.service';
 import { Router } from '@angular/router';
-import { LanguageSelectorComponent } from './language-selector/language-selector.component';
-
+import { Location } from '@angular/common';
+import { event } from 'jquery';
 
 @Component({
   selector: 'app-root',
@@ -17,10 +17,21 @@ import { LanguageSelectorComponent } from './language-selector/language-selector
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
-  constructor(private authenticationService:AuthenticationService, private router:Router){}
-
+  constructor(private authenticationService:AuthenticationService, private router:Router, private location: Location){}
   ngOnInit(): void {
 
+
   }
+  changeLanguage(lang: string): void {
+    if (lang) {
+      const currentUrl = this.router.url;
+      const updatedUrl = currentUrl.replace(/\/(en|es)\//, `/${lang}/`);
+      this.router.navigateByUrl(updatedUrl);
+    }
+  }
+
 }
+
+
+
 

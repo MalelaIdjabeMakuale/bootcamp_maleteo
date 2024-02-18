@@ -3,12 +3,7 @@ import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-language-selector',
-  template: `
-    <select (change)="changeLanguage($event)">
-      <option value="en">English</option>
-      <option value="es">Spanish</option>
-    </select>
-  `
+  template: ''
 })
 export class LanguageSelectorComponent {
   constructor(private location: Location) {}
@@ -23,5 +18,6 @@ export class LanguageSelectorComponent {
     }
   }
 }
+
 
 

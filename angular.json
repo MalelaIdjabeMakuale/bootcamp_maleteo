@@ -6,8 +6,11 @@
     "maleteo": {
       "i18n": {
         "sourceLocale": "es",
-        "locales": {"en": "src/locale/messages.en.xlf"}
+        "locales": {
+          "en": "src/locale/messages.en.xlf"
+        }
       },
+
       "projectType": "application",
       "schematics": {},
       "root": "",
