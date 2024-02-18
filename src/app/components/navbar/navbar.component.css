@@ -1,18 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
-
-body {
-  margin: 0;
-}
-
 .navbar {
   position: fixed;
   bottom: 0;
-  width: 100%;
+  width: 95%; 
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  background-color: #ffffff;
+  background-color: #F68F23;
+  border-radius: 10px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.container:hover .navbar {
+  opacity: 1; 
 }
 
 .navbar ul {
@@ -30,9 +33,9 @@ body {
 }
 
 .navbar li img {
-  width: 42px;
-  height: 42px;
-  margin: 0 10px;
+  width: 32px;
+  height: 32px;
+  filter: drop-shadow(2px 2px 2px #976B47);
 }
 
 
