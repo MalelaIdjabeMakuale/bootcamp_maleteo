@@ -1,5 +1,9 @@
+
+
+<body class="body">
+
 @if(showLoginForm){
-<div class="iniciarSesion">
+<div class="registerText">
   <h2 class="iniciar">Iniciar Sesión</h2>
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <label for="userName">Username:</label>
@@ -9,15 +13,16 @@
    <button type="submit" class="submitButton">Iniciar sesión</button> 
     
   </form>
+  <div class="registrate"><p> Si no tienes una cuenta, <button class="registerBtn"(click)="toggleForm()">registrate aquí</button></p></div>
+
 </div> 
-<div class="registrate"><p> Si no tienes una cuenta, <button class="registerBtn"(click)="toggleForm()">registrate aquí</button></p></div>
 
 
 
 }
 @if(!showLoginForm){
-<div class="registrarse">
-  <h2>Registrarse</h2>
+<div class="registerText">
+  <h2 class="iniciar">Registrarse</h2>
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <label for="email">Direccion de correo electronico:</label>
     <input type="text" id="email" formControlName="email" />
@@ -47,3 +52,5 @@
 }
 
 
+
+</body>

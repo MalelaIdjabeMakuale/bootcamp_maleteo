@@ -1,16 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
 
+.body {background-color: #FFEACE;
+    margin: 0;
+    padding: 0;
+      width: 100%;
 
+}
 
 .container {
     display: flex;
     margin: 5vh;
 
     .titulo {.nombre {font-family: "Catamaran", sans-serif;
-        font-size: 30px ;}
+        text-transform: capitalize;
+        font-size: 30px ;
+        color:#976B47}
         .editar {
             font-family: "Noto Sans", sans-serif;
+            color:#976B47
         }
     
     }
@@ -30,11 +38,13 @@
 
     h3 {font-family: "Noto Sans", sans-serif;
         font-size: 18px ;
+        color:#976B47;
 
     }
 
     a {font-family: "Noto Sans", sans-serif;
         font-size: 18px ;
+        color:#976B47;
 
     }
 
@@ -47,7 +57,7 @@ margin: 5vh;
 button {
     font-family: "Noto Sans", sans-serif;
     background-color:#F68F23;
-    color: white;
+    color: #ffeace;;
     width: 10vh;
     padding: px;
     border: none;

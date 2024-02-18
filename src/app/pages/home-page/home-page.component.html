@@ -6,8 +6,8 @@
   
   
 
-<h2 class="selecciona">Selecciona tu continente:</h2>
-<select [(ngModel)]="selectedContinent">
+<h2 class="selectText">Selecciona tu continente:</h2>
+<select class="select" [(ngModel)]="selectedContinent">
     @for (continent of continents; track $index) {<option> {{continent.name}}</option>
     }
     
@@ -22,15 +22,15 @@
   
 
       <div class="tarifa1">
-        <h4>24 horas</h4>
-        <h2>{{ getContinentPrice(selectedContinent) }}</h2>
-        <h4>Por equipaje</h4>
+        <h4 class="timeText">24 horas</h4>
+        <h2 class="continentText">{{ getContinentPrice(selectedContinent) }}</h2>
+        <h4 class="luggageText">Por equipaje</h4>
       </div>
 
       <div class="tarifa2">
-        <h4>Día adicional</h4>
-        <h2>{{ getContinentPrice2(selectedContinent) }}</h2>
-        <h4>Por equipaje</h4>
+        <h4 class="timeText">Día adicional</h4>
+        <h2 class="continentText">{{ getContinentPrice2(selectedContinent) }}</h2>
+        <h4 class="luggageText">Por equipaje</h4>
       </div>
     
   </div>

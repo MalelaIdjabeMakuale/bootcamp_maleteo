@@ -4,6 +4,8 @@ import { Component, OnInit } from '@angular/core';
 import {ReactiveFormsModule ,FormControl, FormGroup} from '@angular/forms';
 import { RouterLink, Router } from '@angular/router';
 import { AuthenticateService } from '../../services/authenticate.service';
+import { Validators } from '@angular/forms';
+
 
 
 import swal from 'sweetalert';
@@ -40,10 +42,10 @@ export class LocationPagesComponent implements OnInit {
   }
   
   profileForm = new FormGroup({
-    addressForm: new FormControl(''),
-    dayPutForm : new FormControl(''),
-    dayOutForm : new FormControl(''),
-    numObjectsForm : new FormControl()
+    addressForm: new FormControl('', [Validators.required]),
+    dayPutForm: new FormControl('', [Validators.required]),
+    dayOutForm: new FormControl('', [Validators.required]),
+    numObjectsForm: new FormControl('', [Validators.required])
     
   });
 

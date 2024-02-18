@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
+.body {background-color: #FFEACE;
+  margin: 0;
+  padding: 0;
+    width: 100%;
+
+}
+
 .container {
     padding:4vh;
 }
@@ -8,11 +15,13 @@ h2 {font-family: "Catamaran", sans-serif;
     font-weight: bold;
     font-size: 18px;
   padding-left: 4vh;
+  color:#976B47
 }
 
 p{font-family: "Noto Sans", sans-serif;
 font-size: 10px;
-padding-left: 4vh;}
+padding-left: 4vh;
+color:#976B47}
 
 form {
     max-width: 90%;
@@ -20,6 +29,7 @@ form {
     padding: 20px;
     border:none;
     border-radius: 5px;
+    color:#976B47
   }
   
   label {
@@ -45,18 +55,25 @@ form {
 div {margin-bottom: 1vh;
 
 }
-button {
-    font-family: "Noto Sans", sans-serif;
-    background-color:#F68F23;
-    color: white;
-  width: 30vh;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    margin-top: 4vh;
-    cursor: pointer;
-  }
+.submitButton {
+  font-family: "Noto Sans", sans-serif;
+  background-color:#F68F23;
+  color: #FFEACE;
+width: 30vh;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 4vh;
+  cursor: pointer;
+  filter: drop-shadow(2px 2px 2px #976B47);
+}
 
+
+
+.submitButton:hover {
+background-color: #D17100; 
+transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
 
 
 .cyberpunk-checkbox {
@@ -139,6 +156,14 @@ button {
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
+select { margin: 20px 20px;
+  opacity: 0.7;
+  font-family: 'Noto Sans', sans-serif;
+}
+
+option { background-color: black;
+  opacity: 0.7;
+  font-family: 'Noto Sans', sans-serif;}
 
 
 .custom-select select:focus {
@@ -148,4 +173,21 @@ button {
 }
 #map {
   height: 500px;
+}
+
+input {
+  font-family: "Noto Sans", sans-serif;
+  width: 90%;
+  padding: 1em;
+  border: none;
+color: #976B47;
+  background-color: #FFEACE;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 12px;
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+input:focus {
+  outline: none;
+  border-color: #005247;
+  background-color: #f1d0ad;
 }
