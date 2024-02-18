@@ -18,28 +18,25 @@ export class ReservaConfirmadaComponent implements OnInit {
   constructor(private sharedService:SharedService ,private servicio: ServicesService,private authentication:AuthenticationService, private router:Router){}
   id!:string | null;
   user!:user;
-  reservas=[];
+  reservas:string[]=[];
   chats=[];
 ngOnInit(): void {
   this.id = localStorage.getItem('id_user');
-  this.getData();
   if(!this.authentication.isAuthenticated()){
     swal('¡No puedes acceder si no estas identificado!');
     this.router.navigate(['/registro']) 
   }
   
+  this.getData();
 }
 getData(){
   this.servicio.getUserId(this.id).subscribe((data:any) => {
     this.user = data.data;
      this.user.estaciones.forEach((element:any) => {
-      this.reservas =  element.bookings;
-      console.log(element.bookings)
-  
+      this.reservas = [... this.reservas, element.bookings];
+      // console.log(element.bookings)
     });;
-
-
-
+    
     console.log("Esto son las reservas", this.reservas);
     this.chats = data.data.chats;
     console.log("Esto son los chats", this.chats);

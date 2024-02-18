@@ -3,11 +3,15 @@
   <img src="../../assets/fenix.png">
   <ul>
     @for(reserva of reservas; track $index){
-      <li>
-       <p class="reserva">Reserva: {{reserva}}</p>
-       <button (click)="aceptarReserva(reserva)">Aceptar</button>
-       <button (click)="eliminarReserva()">Eliminar</button>
-      </li>
+      @for(detail of reserva;track $index){
+
+        
+        <li>
+         <p class="reserva">Reserva: {{detail}}</p>
+         <button (click)="aceptarReserva(detail)">Aceptar</button>
+         <button (click)="eliminarReserva()">Eliminar</button>
+        </li>
+      }
     }
   </ul>
 </div>
