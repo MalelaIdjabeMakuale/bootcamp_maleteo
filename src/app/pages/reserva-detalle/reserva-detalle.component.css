@@ -4,7 +4,7 @@
 
 h1 {
   font-family: "Catamaran", sans-serif;
-  font-size: 30px;
+  font-size: 18px;
 }
 
 body {
@@ -21,8 +21,8 @@ body {
   background: #faab1d;
   background: linear-gradient(
     90deg,
-    rgba(250, 171, 29, 1) 0%,
-    rgba(254, 204, 49, 1) 97%
+    #f1d0ad 0%,
+    #FFEACE 97%
   );
 }
 
@@ -36,6 +36,7 @@ button {
   border-radius: 5px;
   margin: 2vh 0;
   cursor: pointer;
+  filter: drop-shadow(2px 2px 2px #976B47);
 }
 button:hover {
   background-color: #d17100;

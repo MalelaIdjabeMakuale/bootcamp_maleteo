@@ -81,6 +81,12 @@ export class Chat2Component implements OnInit {
   }
 
   getMessageContentClass(username: string): string {
-    return username === this.username ? 'message-content-orange' : 'message-content-blue';
+    return username === this.username ? 'message-content-green' : 'message-content-pastel';
   }
+
+  getMessageUsernameClass(username: string): string {
+    return username === this.username ? 'message-username-green' : 'message-username-pastel';
+  }
+
+ 
 }

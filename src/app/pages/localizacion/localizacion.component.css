@@ -5,9 +5,11 @@
   height: 500px;
 }
 
-/* .isloading {
-  height: 80vh;
-} */
+ .isloading {
+  height: 40vh;
+ 
+} 
+
 .loading-container {
   position: absolute;
   top: 50%;
@@ -85,10 +87,11 @@ img {
   padding: 10px;
   border: none;
   border-radius: 5px;
-  margin: 20px 20px;
+  margin: 20px 50px;
   cursor: pointer;
 }
 
 .tick {
   color: #008000;
 }
+
